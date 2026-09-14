@@ -1,0 +1,17 @@
+actors:
+  - actor_id: user_alice
+    actor_type: user
+    role_id: role_employee
+    organization_id: org_acme
+    visibility_profile: default
+
+  - actor_id: agent
+    actor_type: target_agent
+    visibility_profile: default
+    tool_access_profile: standard
+
+  - actor_id: user_bob
+    actor_type: approver
+    role_id: role_manager
+    organization_id: org_acme
+    visibility_profile: default

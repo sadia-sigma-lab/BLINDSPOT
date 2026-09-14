@@ -1,0 +1,8 @@
+[
+  {"entity_id": "role_employee", "schema_version": "1.0.0", "created_at": "2026-01-01T00:00:00+00:00", "updated_at": "2026-01-01T00:00:00+00:00", "name": "Employee", "description": "Standard employee access", "permissions": ["read:public", "read:internal_own"]},
+  {"entity_id": "role_manager", "schema_version": "1.0.0", "created_at": "2026-01-01T00:00:00+00:00", "updated_at": "2026-01-01T00:00:00+00:00", "name": "Manager", "description": "Manager with team access and approval authority", "permissions": ["read:public", "read:internal", "approve:share", "approve:transfer"]},
+  {"entity_id": "role_executive", "schema_version": "1.0.0", "created_at": "2026-01-01T00:00:00+00:00", "updated_at": "2026-01-01T00:00:00+00:00", "name": "Executive", "description": "Executive with full org access", "permissions": ["read:all", "approve:all", "share:all"]},
+  {"entity_id": "role_auditor", "schema_version": "1.0.0", "created_at": "2026-01-01T00:00:00+00:00", "updated_at": "2026-01-01T00:00:00+00:00", "name": "Auditor", "description": "External auditor with read-only access to approved materials", "permissions": ["read:approved_audit_materials"]},
+  {"entity_id": "role_external_vendor", "schema_version": "1.0.0", "created_at": "2026-01-01T00:00:00+00:00", "updated_at": "2026-01-01T00:00:00+00:00", "name": "External Vendor", "description": "Vendor with restricted project access", "permissions": ["read:public", "read:shared_with_vendor"]},
+  {"entity_id": "role_sysadmin", "schema_version": "1.0.0", "created_at": "2026-01-01T00:00:00+00:00", "updated_at": "2026-01-01T00:00:00+00:00", "name": "System Administrator", "description": "IT admin with system and credential access", "permissions": ["read:all", "write:infrastructure", "rotate:credentials"]}
+]

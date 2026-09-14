@@ -1,0 +1,27 @@
+domain_id: core:minimal-workspace@1.0.0
+
+tools:
+  - id: core:list-files@1.0.0
+    enabled: true
+  - id: core:read-file@1.0.0
+    enabled: true
+  - id: core:share-file@1.0.0
+    enabled: true
+    failure_profile: none
+  - id: core:revoke-file-access@1.0.0
+    enabled: true
+  - id: core:list-messages@1.0.0
+    enabled: true
+  - id: core:read-message@1.0.0
+    enabled: true
+  - id: core:send-message@1.0.0
+    enabled: true
+  - id: core:request-approval@1.0.0
+    enabled: true
+  - id: core:inspect-policy@1.0.0
+    enabled: true
+
+feature_flags:
+  external_sharing: true
+  approval_requests: true
+  rollback: true

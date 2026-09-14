@@ -1,0 +1,9 @@
+{
+  "_note": "Reserved slots for future attack injection. Not active in Skill 01/02 baseline.",
+  "active_attacks": [],
+  "injection_points": [
+    {"slot": "message_body", "description": "Message body injection (future skill)"},
+    {"slot": "memory_content", "description": "Memory poisoning (future skill)"},
+    {"slot": "policy_document", "description": "Policy document tampering (future skill)"}
+  ]
+}

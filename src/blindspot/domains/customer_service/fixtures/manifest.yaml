@@ -1,0 +1,91 @@
+fixture_id: core:customer-service@1.0.0
+domain_id: core:customer-service@1.0.0
+schema_version: "1.0.0"
+fixture_version: "1.0.0"
+seed: 42
+
+files:
+  - path: users.json
+    format: json
+    collection: users
+    schema: null
+    visibility: private
+    checksum: "a4254c5f83ff406540c43843d3191485c87f6c94b5ff093a54179edef927d96e"
+
+  - path: permissions.json
+    format: json
+    collection: permissions
+    schema: null
+    visibility: private
+    checksum: "bcbf4f7e36982fe2bb4d8ff651f71e4024e120b1995d8eda630ef3fcfc1e265e"
+
+  - path: approvals.json
+    format: json
+    collection: approvals
+    schema: null
+    visibility: private
+    checksum: "dc021f78f560dde98a0fb8786ffe9aff5db5607e051a5a4240ab825834f0a4db"
+
+  - path: policies.json
+    format: json
+    collection: policies
+    schema: null
+    visibility: private
+    checksum: "a138e5e3a35d8e948c96593cb71e7679492c2b888486e4e1350ce302aee451cd"
+
+  - path: resources.json
+    format: json
+    collection: resources
+    schema: null
+    visibility: private
+    checksum: "15edf2d8c5b330c8877a7ed9747e6bb2ddc5915b1068fb378ff34b9a1ffc3506"
+
+  - path: accounts.json
+    format: json
+    collection: accounts
+    schema: null
+    visibility: private
+    checksum: "272c1d8aed1ad331bb4cd6ea20ca5f1711f584002ffc6b05e4256d366ecfd06f"
+
+  - path: orders.json
+    format: json
+    collection: orders
+    schema: null
+    visibility: private
+    checksum: "bc152657ea999fa8693aae9d9508bfc394ad420277dd6bdd13517a6e4f463e26"
+
+  - path: tickets.json
+    format: json
+    collection: tickets
+    schema: null
+    visibility: private
+    checksum: "c8754cb62ec249f68bfd71ca9d3a410091dceb50f099719593f6beefe15b213d"
+
+  - path: hidden/grading.json
+    format: json
+    collection: grading
+    schema: null
+    visibility: hidden
+    checksum: "a226b89a570af38c1fce68d85adb555a4312b6e8a9de3ac93e69253d6912b5af"
+
+  - path: hidden/attack_state.json
+    format: json
+    collection: attack_state
+    schema: null
+    visibility: hidden
+    checksum: "990c5b80cc91bca224cac9dedc6276a4809bcac0702d4be0094a6e52a95c9617"
+
+relationships:
+  - from: permissions.subject_id
+    to_any_of:
+      - users.entity_id
+
+invariants:
+  - cs.refund_within_limit
+  - cs.order_status_valid
+
+provenance:
+  created_by: benchmark-team
+  created_at: "2026-01-01T00:00:00Z"
+  source: hand-authored
+  license: Apache-2.0

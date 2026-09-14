@@ -1,0 +1,141 @@
+{
+  "$comment": "PolicyDocument \u2014 a scenario policy with ordered rules. The agent sees applicable policies in its context. Paper: \u00a73.3.",
+  "$defs": {
+    "PolicyRule": {
+      "description": "A single evaluatable policy rule.",
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "effect": {
+          "enum": [
+            "allow",
+            "deny",
+            "require_approval",
+            "require_verification"
+          ],
+          "title": "Effect",
+          "type": "string"
+        },
+        "action_pattern": {
+          "title": "Action Pattern",
+          "type": "string"
+        },
+        "subject_conditions": {
+          "additionalProperties": true,
+          "title": "Subject Conditions",
+          "type": "object"
+        },
+        "resource_conditions": {
+          "additionalProperties": true,
+          "title": "Resource Conditions",
+          "type": "object"
+        },
+        "context_conditions": {
+          "additionalProperties": true,
+          "title": "Context Conditions",
+          "type": "object"
+        },
+        "priority": {
+          "default": 0,
+          "title": "Priority",
+          "type": "integer"
+        },
+        "enabled": {
+          "default": true,
+          "title": "Enabled",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "rule_id",
+        "description",
+        "effect",
+        "action_pattern"
+      ],
+      "title": "PolicyRule",
+      "type": "object"
+    }
+  },
+  "description": "A versioned policy document containing one or more rules.",
+  "properties": {
+    "entity_id": {
+      "title": "Entity Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "title": "Updated At",
+      "type": "string"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "title": "Metadata",
+      "type": "object"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "domain": {
+      "title": "Domain",
+      "type": "string"
+    },
+    "rules": {
+      "items": {
+        "$ref": "#/$defs/PolicyRule"
+      },
+      "title": "Rules",
+      "type": "array"
+    },
+    "source_path": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Path"
+    },
+    "human_readable_path": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Human Readable Path"
+    }
+  },
+  "required": [
+    "entity_id",
+    "schema_version",
+    "created_at",
+    "updated_at",
+    "title",
+    "domain",
+    "rules"
+  ],
+  "title": "PolicyDocument",
+  "type": "object"
+}

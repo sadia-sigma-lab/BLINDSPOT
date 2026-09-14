@@ -1,0 +1,20 @@
+[
+  {
+    "entity_id": "org_acme",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "name": "ACME Corporation",
+    "tenant_id": "tenant_acme",
+    "parent_organization_id": null
+  },
+  {
+    "entity_id": "org_external",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "name": "External Organization",
+    "tenant_id": "tenant_external",
+    "parent_organization_id": null
+  }
+]

@@ -1,0 +1,210 @@
+{
+  "$comment": "StepRiskLabel \u2014 risk labeling schema.",
+  "description": "Complete risk label for one trajectory step.",
+  "properties": {
+    "raw_run_id": {
+      "title": "Raw Run Id",
+      "type": "string"
+    },
+    "verified_id": {
+      "title": "Verified Id",
+      "type": "string"
+    },
+    "episode_id": {
+      "title": "Episode Id",
+      "type": "string"
+    },
+    "session_id": {
+      "title": "Session Id",
+      "type": "string"
+    },
+    "step": {
+      "title": "Step",
+      "type": "integer"
+    },
+    "unsafe_now": {
+      "default": false,
+      "title": "Unsafe Now",
+      "type": "boolean"
+    },
+    "unsafe_precursor": {
+      "default": false,
+      "title": "Unsafe Precursor",
+      "type": "boolean"
+    },
+    "realized_harm_now": {
+      "default": false,
+      "title": "Realized Harm Now",
+      "type": "boolean"
+    },
+    "policy_violation_now": {
+      "default": false,
+      "title": "Policy Violation Now",
+      "type": "boolean"
+    },
+    "attack_success_now": {
+      "default": false,
+      "title": "Attack Success Now",
+      "type": "boolean"
+    },
+    "future_unsafe_action": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "title": "Future Unsafe Action",
+      "type": "object"
+    },
+    "future_realized_harm": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "title": "Future Realized Harm",
+      "type": "object"
+    },
+    "future_policy_violation": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "title": "Future Policy Violation",
+      "type": "object"
+    },
+    "future_attack_success": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "title": "Future Attack Success",
+      "type": "object"
+    },
+    "time_to_unsafe_action": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Time To Unsafe Action"
+    },
+    "time_to_harm": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Time To Harm"
+    },
+    "time_to_policy_violation": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Time To Policy Violation"
+    },
+    "time_to_attack_success": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Time To Attack Success"
+    },
+    "point_of_no_return": {
+      "default": false,
+      "title": "Point Of No Return",
+      "type": "boolean"
+    },
+    "recoverable": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Recoverable"
+    },
+    "minimum_safe_intervention_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Minimum Safe Intervention Id"
+    },
+    "confidence": {
+      "default": 1.0,
+      "title": "Confidence",
+      "type": "number"
+    },
+    "evidence_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Evidence Ids",
+      "type": "array"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "title": "Metadata",
+      "type": "object"
+    }
+  },
+  "required": [
+    "raw_run_id",
+    "verified_id",
+    "episode_id",
+    "session_id",
+    "step"
+  ],
+  "title": "StepRiskLabel",
+  "type": "object"
+}

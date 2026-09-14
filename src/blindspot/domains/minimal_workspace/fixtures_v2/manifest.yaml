@@ -1,0 +1,119 @@
+fixture_id: core:minimal-workspace@2.0.0
+domain_id: core:minimal-workspace@2.0.0
+schema_version: "1.0.0"
+fixture_version: "2.0.0"
+seed: 42
+
+files:
+  - path: users.json
+    format: json
+    collection: users
+    schema: schemas/shared/user.schema.json
+    visibility: private
+    checksum: "4b7897aba328459f35deb0194f1446e7d205f2028623cf3e1f6db532e4039ab1"
+
+  - path: organizations.json
+    format: json
+    collection: organizations
+    schema: schemas/shared/organization.schema.json
+    visibility: private
+    checksum: "01f27f37091576578815c8ca90dc5f4d581654dec204d614033c48543b2de58b"
+
+  - path: groups.json
+    format: json
+    collection: groups
+    schema: null
+    visibility: private
+    checksum: "1e8796d38e7f35b5df20b5682f16889b1e000f3a2b4945a2539437033e93f24a"
+
+  - path: roles.json
+    format: json
+    collection: roles
+    schema: null
+    visibility: private
+    checksum: "143db203f7ac290db956c3cd08e9b45a2e0fa5d79047f29029be4d6dbdc8934e"
+
+  - path: files.json
+    format: json
+    collection: resources
+    schema: schemas/domains/minimal_workspace/file.schema.json
+    visibility: private
+    checksum: "f7aefb2dd7b88e463240015911ce402931714728f0bd390f2978554f5cc3bab3"
+
+  - path: permissions.json
+    format: json
+    collection: permissions
+    schema: schemas/shared/permission.schema.json
+    visibility: private
+    checksum: "3ffcd3674bf8e274070e84886214780f606107a6103bdd78ef5d43d07621d71b"
+
+  - path: approvals.json
+    format: json
+    collection: approvals
+    schema: schemas/shared/approval.schema.json
+    visibility: private
+    checksum: "d137070cb39797dc6e9819eb55593cb3f24687c1697e7437be1cdc7aa43d6335"
+
+  - path: messages.jsonl
+    format: jsonl
+    collection: messages
+    schema: schemas/shared/message.schema.json
+    visibility: private
+    checksum: "593934bb17fc557b90fe632f9532e0401a9e393afd3167ccd03c75fbece7002c"
+
+  - path: events.json
+    format: json
+    collection: events
+    schema: schemas/shared/event.schema.json
+    visibility: private
+    checksum: "d7ab0a66b88f99d63af26d80714d0588b6790369852bebb04604c811156ce64e"
+
+  - path: memory.json
+    format: json
+    collection: memory
+    schema: schemas/shared/memory.schema.json
+    visibility: private
+    checksum: "f03c1a0d4fb0df7830f1ea6f81ff1dffdb9d0bed07b9f731c3d9ce96623fbb85"
+
+  - path: policies.json
+    format: json
+    collection: policies
+    schema: null
+    visibility: private
+    checksum: "955a970ab8744a29ae49cca85b22b4b30db2c1a1d5d5d43f1c0bdb5f89436721"
+
+  - path: hidden/grading.json
+    format: json
+    collection: grading
+    schema: null
+    visibility: hidden
+    checksum: "80f1136260fb8fa0b9d50119e6f84622366c17f33bf3c021dbc9cdb0327ddf1a"
+
+  - path: hidden/attack_state.json
+    format: json
+    collection: attack_state
+    schema: null
+    visibility: hidden
+    checksum: "f90377df4b97bf04d07f05cabc7a9b084999673d8ba60fceed6b7f3c3bccf101"
+
+relationships:
+  - from: permissions.subject_id
+    to_any_of:
+      - users.entity_id
+      - groups.entity_id
+      - roles.entity_id
+  - from: resources.owner_id
+    to_any_of:
+      - users.entity_id
+
+invariants:
+  - minimal_workspace.unique_emails
+  - minimal_workspace.valid_file_owners
+  - minimal_workspace.valid_permission_targets
+
+provenance:
+  created_by: benchmark-team
+  created_at: "2026-01-01T00:00:00Z"
+  source: hand-authored
+  license: Apache-2.0
+  notes: "Expanded v2 fixture with 20 users, 30 files, 40 permissions, 15 approvals, 25 messages, 12 events, 12 memory records, 6 policies."

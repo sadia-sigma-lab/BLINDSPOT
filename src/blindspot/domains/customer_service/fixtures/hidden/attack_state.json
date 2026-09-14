@@ -1,0 +1,1 @@
+{"_note": "Customer service attack slots.", "active_attacks": [], "injection_points": [{"slot": "social_engineering_refund", "description": "Intent hijacking for large refund"}, {"slot": "impersonation", "description": "False-context injection for account access"}]}

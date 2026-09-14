@@ -1,0 +1,211 @@
+{
+  "$comment": "AttackMetadata \u2014 attack family identity, 6-axis taxonomy annotation, and required scenario features. Paper: \u00a74.1, Table 4.",
+  "$defs": {
+    "AttackSource": {
+      "enum": [
+        "user",
+        "environment",
+        "tool",
+        "memory",
+        "agent",
+        "event",
+        "background_actor"
+      ],
+      "title": "AttackSource",
+      "type": "string"
+    },
+    "AttackTarget": {
+      "enum": [
+        "intent",
+        "plan",
+        "tool_selection",
+        "tool_arguments",
+        "authorization",
+        "observation",
+        "memory",
+        "knowledge",
+        "state_belief",
+        "recovery"
+      ],
+      "title": "AttackTarget",
+      "type": "string"
+    },
+    "AttackTemporalPattern": {
+      "enum": [
+        "one_shot",
+        "gradual",
+        "staged",
+        "delayed",
+        "persistent",
+        "cross_session",
+        "adaptive",
+        "opportunistic"
+      ],
+      "title": "AttackTemporalPattern",
+      "type": "string"
+    },
+    "AttackerKnowledgeTier": {
+      "enum": [
+        "static",
+        "public_responses",
+        "tool_calls",
+        "partial_state",
+        "defense_aware",
+        "internal_reasoning"
+      ],
+      "title": "AttackerKnowledgeTier",
+      "type": "string"
+    },
+    "ComponentID": {
+      "description": "Globally unique, stable identifier for a registered benchmark component.",
+      "properties": {
+        "namespace": {
+          "title": "Namespace",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "namespace",
+        "name",
+        "version"
+      ],
+      "title": "ComponentID",
+      "type": "object"
+    }
+  },
+  "description": "Declarative metadata for a registered benchmark attack.",
+  "properties": {
+    "attack_id": {
+      "$ref": "#/$defs/ComponentID"
+    },
+    "display_name": {
+      "title": "Display Name",
+      "type": "string"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string"
+    },
+    "family": {
+      "title": "Family",
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/$defs/AttackSource"
+    },
+    "targets": {
+      "items": {
+        "$ref": "#/$defs/AttackTarget"
+      },
+      "title": "Targets",
+      "type": "array"
+    },
+    "mechanisms": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Mechanisms",
+      "type": "array"
+    },
+    "temporal_patterns": {
+      "items": {
+        "$ref": "#/$defs/AttackTemporalPattern"
+      },
+      "title": "Temporal Patterns",
+      "type": "array"
+    },
+    "harm_categories": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Harm Categories",
+      "type": "array"
+    },
+    "knowledge_tier": {
+      "$ref": "#/$defs/AttackerKnowledgeTier"
+    },
+    "supported_domains": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Supported Domains",
+      "type": "array"
+    },
+    "required_hooks": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Hooks",
+      "type": "array"
+    },
+    "supports_adaptation": {
+      "default": false,
+      "title": "Supports Adaptation",
+      "type": "boolean"
+    },
+    "supports_composition": {
+      "default": true,
+      "title": "Supports Composition",
+      "type": "boolean"
+    },
+    "supports_multi_session": {
+      "default": false,
+      "title": "Supports Multi Session",
+      "type": "boolean"
+    },
+    "deterministic": {
+      "default": true,
+      "title": "Deterministic",
+      "type": "boolean"
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Tags",
+      "type": "array"
+    },
+    "deprecated": {
+      "default": false,
+      "title": "Deprecated",
+      "type": "boolean"
+    },
+    "license": {
+      "default": "Apache-2.0",
+      "title": "License",
+      "type": "string"
+    },
+    "source_package": {
+      "default": "",
+      "title": "Source Package",
+      "type": "string"
+    },
+    "threat_model_notes": {
+      "default": "",
+      "title": "Threat Model Notes",
+      "type": "string"
+    }
+  },
+  "required": [
+    "attack_id",
+    "display_name",
+    "description",
+    "family",
+    "source",
+    "targets",
+    "mechanisms",
+    "temporal_patterns",
+    "harm_categories",
+    "knowledge_tier"
+  ],
+  "title": "AttackMetadata",
+  "type": "object"
+}

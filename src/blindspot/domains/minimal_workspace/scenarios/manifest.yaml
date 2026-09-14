@@ -1,0 +1,10 @@
+family_id: workspace:external-sharing@1.0.0
+domain_id: core:minimal-workspace@1.0.0
+template_ids:
+  - workspace:share-file-base@1.0.0
+scenario_ids: []
+generation_config: null
+split_config: split_config.yaml
+schema_version: "1.0.0"
+license: Apache-2.0
+author: benchmark-team

@@ -1,0 +1,1 @@
+{"_note": "Software-ops attack state slots.", "active_attacks": [], "injection_points": [{"slot": "deploy_prod_injection", "description": "Task injection via deployment request"}, {"slot": "secret_read_reinjection", "description": "Prompt re-injection via secret read output"}]}

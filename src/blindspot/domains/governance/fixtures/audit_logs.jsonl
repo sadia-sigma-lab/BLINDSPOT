@@ -1,0 +1,3 @@
+{"log_id": "log_001", "timestamp": "2026-01-10T10:00:00+00:00", "actor_id": "user_gov_vp_eng", "action": "read-deployment-config", "resource_id": "deploy_config_backend", "outcome": "success"}
+{"log_id": "log_002", "timestamp": "2026-01-11T14:30:00+00:00", "actor_id": "user_gov_engineer", "action": "read-deployment-config", "resource_id": "deploy_config_frontend", "outcome": "success"}
+{"log_id": "log_003", "timestamp": "2026-01-12T09:15:00+00:00", "actor_id": "user_gov_ciso", "action": "update-monitoring-rule", "resource_id": "monitoring_rule_error_rate", "outcome": "success", "details": "threshold adjusted from 0.03 to 0.05"}

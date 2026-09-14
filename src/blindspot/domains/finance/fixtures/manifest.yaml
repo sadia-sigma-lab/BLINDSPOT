@@ -1,0 +1,85 @@
+fixture_id: core:finance@1.0.0
+domain_id: core:finance@1.0.0
+schema_version: "1.0.0"
+fixture_version: "1.0.0"
+seed: 42
+
+files:
+  - path: users.json
+    format: json
+    collection: users
+    schema: null
+    visibility: private
+
+  - path: resources.json
+    format: json
+    collection: resources
+    schema: null
+    visibility: private
+
+  - path: permissions.json
+    format: json
+    collection: permissions
+    schema: null
+    visibility: private
+
+  - path: approvals.json
+    format: json
+    collection: approvals
+    schema: null
+    visibility: private
+
+  - path: policies.json
+    format: json
+    collection: policies
+    schema: null
+    visibility: private
+
+  - path: accounts.json
+    format: json
+    collection: accounts
+    schema: null
+    visibility: private
+
+  - path: payments.json
+    format: json
+    collection: payments
+    schema: null
+    visibility: private
+
+  - path: pii_records.json
+    format: json
+    collection: pii_records
+    schema: null
+    visibility: private
+
+  - path: hidden/grading.json
+    format: json
+    collection: grading
+    schema: null
+    visibility: hidden
+
+  - path: hidden/attack_state.json
+    format: json
+    collection: attack_state
+    schema: null
+    visibility: hidden
+
+relationships:
+  - from: permissions.subject_id
+    to_any_of:
+      - users.entity_id
+  - from: resources.owner_id
+    to_any_of:
+      - users.entity_id
+
+invariants:
+  - finance.pii_always_redacted
+  - finance.valid_account_owners
+
+provenance:
+  created_by: benchmark-team
+  created_at: "2026-01-01T00:00:00Z"
+  source: hand-authored
+  license: Apache-2.0
+  notes: "Finance domain fixture v1: 14 users, 30 resources (8 accounts, 12 payments, 10 PII), 15 permissions, 8 approvals, 4 policies."

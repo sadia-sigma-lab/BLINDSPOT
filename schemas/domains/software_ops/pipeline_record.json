@@ -1,0 +1,118 @@
+{
+  "$comment": "PipelineRecord \u2014 software_ops domain entity. Paper Table 15: software_ops domain state.",
+  "properties": {
+    "entity_id": {
+      "title": "Entity Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "title": "Updated At",
+      "type": "string"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "title": "Metadata",
+      "type": "object"
+    },
+    "resource_type": {
+      "title": "Resource Type",
+      "type": "string"
+    },
+    "owner_id": {
+      "title": "Owner Id",
+      "type": "string"
+    },
+    "organization_id": {
+      "title": "Organization Id",
+      "type": "string"
+    },
+    "classification": {
+      "title": "Classification",
+      "type": "string"
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Tags",
+      "type": "array"
+    },
+    "attributes": {
+      "additionalProperties": true,
+      "title": "Attributes",
+      "type": "object"
+    },
+    "pipeline_id": {
+      "title": "Pipeline Id",
+      "type": "string"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "branch": {
+      "default": "main",
+      "title": "Branch",
+      "type": "string"
+    },
+    "status": {
+      "default": "idle",
+      "enum": [
+        "idle",
+        "running",
+        "passed",
+        "failed",
+        "blocked"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "last_run_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Last Run At"
+    },
+    "deployment_target": {
+      "default": "staging",
+      "title": "Deployment Target",
+      "type": "string"
+    },
+    "requires_approval": {
+      "default": false,
+      "title": "Requires Approval",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "entity_id",
+    "schema_version",
+    "created_at",
+    "updated_at",
+    "resource_type",
+    "owner_id",
+    "organization_id",
+    "classification",
+    "pipeline_id",
+    "name"
+  ],
+  "title": "PipelineRecord",
+  "type": "object"
+}

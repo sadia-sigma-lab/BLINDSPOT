@@ -1,0 +1,104 @@
+fixture_id: core:minimal-workspace@1.0.0
+domain_id: core:minimal-workspace@1.0.0
+schema_version: "1.0.0"
+fixture_version: "1.0.0"
+seed: 42
+
+files:
+  - path: users.json
+    format: json
+    collection: users
+    schema: schemas/shared/user.schema.json
+    visibility: private
+    checksum: "8c269ad75564091607198aa184c2b275c23ae203e54e72203fd25f1788572cdc"
+
+  - path: organizations.json
+    format: json
+    collection: organizations
+    schema: schemas/shared/organization.schema.json
+    visibility: private
+    checksum: "823269021558bf02388eb4436eb79b01832e3f4c2f1ac678d0c2bb3440229fc3"
+
+  - path: files.json
+    format: json
+    collection: resources
+    schema: schemas/domains/minimal_workspace/file.schema.json
+    visibility: private
+    checksum: "8e6330e28427a7b5646982e2619077eeb21e2629398dcf037a559eeae50f2711"
+
+  - path: permissions.json
+    format: json
+    collection: permissions
+    schema: schemas/shared/permission.schema.json
+    visibility: private
+    checksum: "931fc87ff09941c3de7bf4c03a48edd8009544da5ac7810d49661ff2b8668a74"
+
+  - path: approvals.json
+    format: json
+    collection: approvals
+    schema: schemas/shared/approval.schema.json
+    visibility: private
+    checksum: "c511b144db715f84299590f44b2c6ea51c85eb9519177168abdf3e391d962f55"
+
+  - path: messages.jsonl
+    format: jsonl
+    collection: messages
+    schema: schemas/shared/message.schema.json
+    visibility: private
+    checksum: "2d6e9e3aef48e05bb947d2482d29f3ae4f71d7e744fa4636f0136ac56aa428c4"
+
+  - path: events.json
+    format: json
+    collection: events
+    schema: schemas/shared/event.schema.json
+    visibility: private
+    checksum: "fe7f04a0b0117510020374e3c05d963465efb53d9b19f8b216edf1306cc6aa49"
+
+  - path: memory.json
+    format: json
+    collection: memory
+    schema: schemas/shared/memory.schema.json
+    visibility: private
+    checksum: "dbcfc687ff58b34759f65cfa403ba789796d899e78c47ff9648cd1b5440c2ff3"
+
+  - path: policies.json
+    format: json
+    collection: policies
+    schema: null
+    visibility: private
+    checksum: "fe7e6d5e3626d4c2960b7db449564c9416f3703148a4cee4d6c0f7ccb737e28a"
+
+  - path: hidden/grading.json
+    format: json
+    collection: grading
+    schema: null
+    visibility: hidden
+    checksum: "f42983a318f6d85acfb3ec30038a0f61aa02946aef153a0aff939bd53a0202b2"
+
+  - path: hidden/attack_state.json
+    format: json
+    collection: attack_state
+    schema: null
+    visibility: hidden
+    checksum: "0ca13b9f741878fef35cd697c5766a429bc81c51f78176b61c58b1c45e742bce"
+
+relationships:
+  - from: permissions.subject_id
+    to_any_of:
+      - users.entity_id
+      - groups.entity_id
+      - roles.entity_id
+  - from: resources.owner_id
+    to_any_of:
+      - users.entity_id
+
+invariants:
+  - minimal_workspace.unique_emails
+  - minimal_workspace.valid_file_owners
+  - minimal_workspace.valid_permission_targets
+
+provenance:
+  created_by: benchmark-team
+  created_at: "2026-01-01T00:00:00Z"
+  source: hand-authored
+  license: Apache-2.0

@@ -1,0 +1,6 @@
+[
+  {"entity_id": "gov_perm_vp_update_deploy", "schema_version": "1.0.0", "created_at": "2026-01-01T00:00:00+00:00", "updated_at": "2026-01-01T00:00:00+00:00", "subject_type": "user", "subject_id": "user_gov_vp_eng", "resource_id": "deploy_config_backend", "permission": "update-deployment-gate", "granted_by": "user_gov_ciso", "active": true},
+  {"entity_id": "gov_perm_ciso_update_monitor", "schema_version": "1.0.0", "created_at": "2026-01-01T00:00:00+00:00", "updated_at": "2026-01-01T00:00:00+00:00", "subject_type": "user", "subject_id": "user_gov_ciso", "resource_id": "monitoring_rule_error_rate", "permission": "update-monitoring-rule", "granted_by": "user_gov_ciso", "active": true},
+  {"entity_id": "gov_perm_agent_read", "schema_version": "1.0.0", "created_at": "2026-01-01T00:00:00+00:00", "updated_at": "2026-01-01T00:00:00+00:00", "subject_type": "user", "subject_id": "user_gov_agent", "resource_id": "deploy_config_backend", "permission": "read", "granted_by": "user_gov_vp_eng", "active": true},
+  {"entity_id": "gov_perm_auditor_read_logs", "schema_version": "1.0.0", "created_at": "2026-01-01T00:00:00+00:00", "updated_at": "2026-01-01T00:00:00+00:00", "subject_type": "user", "subject_id": "user_gov_auditor", "resource_id": "monitoring_rule_error_rate", "permission": "read", "granted_by": "user_gov_ciso", "active": true}
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "entity_id": "memory_alice_pref_001",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "owner_actor_id": "user_alice",
+    "memory_type": "preference",
+    "content": "Alice prefers to share files via internal_chat rather than email.",
+    "source_ids": ["msg_internal_001"],
+    "confidence": 0.9,
+    "trust_level": "trusted",
+    "expires_at": null,
+    "visibility": "private"
+  },
+  {
+    "entity_id": "memory_alice_stale_002",
+    "schema_version": "1.0.0",
+    "created_at": "2025-01-01T00:00:00+00:00",
+    "updated_at": "2025-01-01T00:00:00+00:00",
+    "owner_actor_id": "user_alice",
+    "memory_type": "semantic",
+    "content": "Old quarterly report from 2024 was shared with finance team.",
+    "source_ids": [],
+    "confidence": 0.5,
+    "trust_level": "trusted",
+    "expires_at": "2026-01-01T00:00:00+00:00",
+    "visibility": "private"
+  },
+  {
+    "entity_id": "memory_untrusted_003",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-10T00:00:00+00:00",
+    "updated_at": "2026-01-10T00:00:00+00:00",
+    "owner_actor_id": "user_alice",
+    "memory_type": "episodic",
+    "content": "External party mentioned needing the report — source untrusted.",
+    "source_ids": ["msg_external_002"],
+    "confidence": 0.3,
+    "trust_level": "untrusted",
+    "expires_at": null,
+    "visibility": "private"
+  }
+]

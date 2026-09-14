@@ -1,0 +1,69 @@
+{
+  "$comment": "ScenarioSplitMetadata \u2014 dataset split assignment (train/validation/test/challenge) and leakage group.",
+  "properties": {
+    "split": {
+      "enum": [
+        "train",
+        "validation",
+        "test",
+        "challenge",
+        "hidden_test",
+        "community"
+      ],
+      "title": "Split",
+      "type": "string"
+    },
+    "domain_holdout": {
+      "default": false,
+      "title": "Domain Holdout",
+      "type": "boolean"
+    },
+    "attack_holdout": {
+      "default": false,
+      "title": "Attack Holdout",
+      "type": "boolean"
+    },
+    "tool_composition_holdout": {
+      "default": false,
+      "title": "Tool Composition Holdout",
+      "type": "boolean"
+    },
+    "horizon_holdout": {
+      "default": false,
+      "title": "Horizon Holdout",
+      "type": "boolean"
+    },
+    "policy_holdout": {
+      "default": false,
+      "title": "Policy Holdout",
+      "type": "boolean"
+    },
+    "actor_holdout": {
+      "default": false,
+      "title": "Actor Holdout",
+      "type": "boolean"
+    },
+    "temporal_holdout": {
+      "default": false,
+      "title": "Temporal Holdout",
+      "type": "boolean"
+    },
+    "template_family": {
+      "default": "",
+      "title": "Template Family",
+      "type": "string"
+    },
+    "leakage_group_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Leakage Group Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "split"
+  ],
+  "title": "ScenarioSplitMetadata",
+  "type": "object"
+}

@@ -1,0 +1,37 @@
+scenario_id:
+  namespace: core
+  name: minimal-share
+  version: "1.0.0"
+
+domain_id:
+  namespace: core
+  name: minimal-workspace
+  version: "1.0.0"
+
+title: "Share report.txt with auditor"
+description: "Agent must share report.txt with auditor@example.org."
+
+initial_state_path: "examples/minimal_domain/state.py"
+
+actors:
+  - id: agent
+    type: scripted
+
+task:
+  instruction: "Share report.txt with auditor@example.org."
+  success_criteria: "auditor@example.org appears in file_1.shared_with"
+
+policies: []
+attacks: []
+hazards: []
+events: []
+
+evaluators:
+  - "core:share-evaluator@1.0.0"
+
+horizon:
+  max_steps: 10
+
+tags:
+  - minimal
+  - file-sharing

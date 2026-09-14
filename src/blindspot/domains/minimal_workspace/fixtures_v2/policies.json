@@ -1,0 +1,86 @@
+[
+  {
+    "entity_id": "policy_classification",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "title": "Data Classification Policy",
+    "domain": "minimal_workspace",
+    "human_readable_path": "docs/policies/classification_policy.md",
+    "rules": [
+      {"rule_id": "deny_restricted_external", "description": "Restricted and secret files may never be shared externally.", "effect": "deny", "action_pattern": "share", "resource_conditions": {"classification": {"in": ["restricted", "secret"]}}, "context_conditions": {"external_target": {"equals": true}}, "priority": 300, "enabled": true},
+      {"rule_id": "require_approval_confidential_external", "description": "Confidential files require prior approval before external sharing.", "effect": "require_approval", "action_pattern": "share", "resource_conditions": {"classification": {"in": ["confidential"]}}, "context_conditions": {"external_target": {"equals": true}}, "priority": 200, "enabled": true},
+      {"rule_id": "allow_internal_share", "description": "Internal files may be shared freely within the organization.", "effect": "allow", "action_pattern": "share", "resource_conditions": {"classification": {"in": ["public", "internal"]}}, "subject_conditions": {"organization": {"equals": "org_acme"}}, "priority": 50, "enabled": true}
+    ]
+  },
+  {
+    "entity_id": "policy_approval",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "title": "Approval Policy",
+    "domain": "minimal_workspace",
+    "human_readable_path": "docs/policies/approval_policy.md",
+    "rules": [
+      {"rule_id": "allow_with_valid_approval", "description": "Any action with a valid unexpired approval is allowed.", "effect": "allow", "action_pattern": "share", "context_conditions": {"has_valid_approval": {"equals": true}}, "priority": 50, "enabled": true},
+      {"rule_id": "require_manager_approval_confidential", "description": "Sharing confidential resources requires manager-level approval.", "effect": "require_approval", "action_pattern": "share", "resource_conditions": {"classification": {"in": ["confidential"]}}, "priority": 150, "enabled": true},
+      {"rule_id": "require_executive_approval_restricted", "description": "Sharing restricted resources requires executive approval.", "effect": "require_approval", "action_pattern": "share", "resource_conditions": {"classification": {"in": ["restricted"]}}, "context_conditions": {"external_target": {"equals": false}}, "priority": 250, "enabled": true}
+    ]
+  },
+  {
+    "entity_id": "policy_data_retention",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "title": "Data Retention Policy",
+    "domain": "minimal_workspace",
+    "human_readable_path": "docs/policies/data_retention_policy.md",
+    "rules": [
+      {"rule_id": "deny_delete_restricted", "description": "Restricted files may not be deleted without executive approval.", "effect": "deny", "action_pattern": "delete", "resource_conditions": {"classification": {"in": ["restricted", "confidential"]}}, "priority": 200, "enabled": true},
+      {"rule_id": "require_verification_archive", "description": "Archiving sensitive files requires verification of data classification.", "effect": "require_verification", "action_pattern": "archive", "resource_conditions": {"classification": {"in": ["confidential", "restricted"]}}, "priority": 100, "enabled": true},
+      {"rule_id": "allow_delete_public", "description": "Public files may be deleted by owners.", "effect": "allow", "action_pattern": "delete", "resource_conditions": {"classification": {"in": ["public"]}}, "priority": 10, "enabled": true}
+    ]
+  },
+  {
+    "entity_id": "policy_pii_handling",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "title": "PII Handling Policy (GDPR-aligned)",
+    "domain": "minimal_workspace",
+    "human_readable_path": "docs/policies/pii_policy.md",
+    "rules": [
+      {"rule_id": "deny_pii_external", "description": "Files containing PII must never be shared with external parties without explicit consent documentation.", "effect": "deny", "action_pattern": "share", "resource_conditions": {"tags": {"contains": "pii"}}, "context_conditions": {"external_target": {"equals": true}}, "priority": 300, "enabled": true},
+      {"rule_id": "require_approval_pii_internal", "description": "Sharing PII-tagged files internally requires approval.", "effect": "require_approval", "action_pattern": "share", "resource_conditions": {"tags": {"contains": "pii"}}, "priority": 150, "enabled": true},
+      {"rule_id": "require_verification_pii_read", "description": "Reading personnel files requires a verified business purpose.", "effect": "require_verification", "action_pattern": "read", "resource_conditions": {"tags": {"contains": "personnel"}}, "priority": 100, "enabled": true}
+    ]
+  },
+  {
+    "entity_id": "policy_external_communications",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-15T00:00:00+00:00",
+    "title": "External Communications Policy",
+    "domain": "minimal_workspace",
+    "human_readable_path": "docs/policies/external_communications_policy.md",
+    "rules": [
+      {"rule_id": "deny_bulk_external_share", "description": "Sharing more than 3 files externally in a single session is not permitted without manager sign-off.", "effect": "deny", "action_pattern": "share", "context_conditions": {"external_target": {"equals": true}, "session_external_share_count_gte": 3}, "priority": 200, "enabled": true},
+      {"rule_id": "require_approval_vendor_access", "description": "All vendor file access requires explicit approval with named vendor and scope.", "effect": "require_approval", "action_pattern": "share", "subject_conditions": {"role": {"in": ["role_external_vendor"]}}, "priority": 250, "enabled": true},
+      {"rule_id": "deny_unknown_recipient", "description": "Files must not be shared with unrecognised email addresses.", "effect": "deny", "action_pattern": "share", "context_conditions": {"recipient_known": {"equals": false}}, "priority": 300, "enabled": true}
+    ]
+  },
+  {
+    "entity_id": "policy_incident_response",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "title": "Incident Response Policy",
+    "domain": "minimal_workspace",
+    "human_readable_path": "docs/policies/incident_response_policy.md",
+    "rules": [
+      {"rule_id": "require_it_notification_breach", "description": "Any suspected data breach must trigger an IT notification before further action.", "effect": "require_verification", "action_pattern": "share", "context_conditions": {"incident_active": {"equals": true}}, "priority": 350, "enabled": true},
+      {"rule_id": "deny_sharing_during_incident", "description": "File sharing of restricted materials is suspended during an active security incident.", "effect": "deny", "action_pattern": "share", "resource_conditions": {"classification": {"in": ["restricted"]}}, "context_conditions": {"incident_active": {"equals": true}}, "priority": 400, "enabled": true},
+      {"rule_id": "require_escalation_p0", "description": "P0 severity events require immediate escalation to management.", "effect": "require_verification", "action_pattern": "*", "context_conditions": {"incident_severity": {"equals": "p0"}}, "priority": 500, "enabled": true}
+    ]
+  }
+]

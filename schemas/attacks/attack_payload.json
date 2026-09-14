@@ -1,0 +1,62 @@
+{
+  "$comment": "AttackPayload \u2014 scheduled adversarial turn content for static attacks. Adaptive attacks generate content live via LLM.",
+  "description": "A single adversarial payload unit.",
+  "properties": {
+    "payload_id": {
+      "title": "Payload Id",
+      "type": "string"
+    },
+    "payload_type": {
+      "enum": [
+        "message",
+        "document_content",
+        "tool_output",
+        "memory_record",
+        "event_payload",
+        "metadata",
+        "user_instruction"
+      ],
+      "title": "Payload Type",
+      "type": "string"
+    },
+    "content": {
+      "title": "Content"
+    },
+    "source_id": {
+      "title": "Source Id",
+      "type": "string"
+    },
+    "trust_label": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Trust Label"
+    },
+    "provenance_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Provenance Ids",
+      "type": "array"
+    },
+    "verifier_labels": {
+      "additionalProperties": true,
+      "title": "Verifier Labels",
+      "type": "object"
+    }
+  },
+  "required": [
+    "payload_id",
+    "payload_type",
+    "content",
+    "source_id"
+  ],
+  "title": "AttackPayload",
+  "type": "object"
+}

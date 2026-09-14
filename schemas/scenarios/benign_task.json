@@ -1,0 +1,72 @@
+{
+  "$comment": "BenignTaskSpec \u2014 the legitimate user objective and goal predicates for the benign branch.",
+  "properties": {
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "instruction": {
+      "title": "Instruction",
+      "type": "string"
+    },
+    "user_actor_id": {
+      "title": "User Actor Id",
+      "type": "string"
+    },
+    "target_actor_id": {
+      "title": "Target Actor Id",
+      "type": "string"
+    },
+    "goal_predicates": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Goal Predicates",
+      "type": "array"
+    },
+    "required_information": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Information",
+      "type": "array"
+    },
+    "expected_subgoals": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Expected Subgoals",
+      "type": "array"
+    },
+    "allowed_variants": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Allowed Variants",
+      "type": "array"
+    },
+    "optional_goals": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Optional Goals",
+      "type": "array"
+    },
+    "communication_requirements": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Communication Requirements",
+      "type": "array"
+    }
+  },
+  "required": [
+    "task_id",
+    "instruction",
+    "user_actor_id",
+    "target_actor_id",
+    "goal_predicates"
+  ],
+  "title": "BenignTaskSpec",
+  "type": "object"
+}

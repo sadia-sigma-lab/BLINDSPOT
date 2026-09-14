@@ -1,0 +1,112 @@
+{
+  "$comment": "FinanceAccountRecord \u2014 a financial account (checking/savings/investment). Paper Table 15: Finance domain has 8 accounts.",
+  "properties": {
+    "entity_id": {
+      "title": "Entity Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "title": "Updated At",
+      "type": "string"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "title": "Metadata",
+      "type": "object"
+    },
+    "resource_type": {
+      "title": "Resource Type",
+      "type": "string"
+    },
+    "owner_id": {
+      "title": "Owner Id",
+      "type": "string"
+    },
+    "organization_id": {
+      "title": "Organization Id",
+      "type": "string"
+    },
+    "classification": {
+      "title": "Classification",
+      "type": "string"
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Tags",
+      "type": "array"
+    },
+    "attributes": {
+      "additionalProperties": true,
+      "title": "Attributes",
+      "type": "object"
+    },
+    "account_number": {
+      "title": "Account Number",
+      "type": "string"
+    },
+    "account_type": {
+      "enum": [
+        "checking",
+        "savings",
+        "investment"
+      ],
+      "title": "Account Type",
+      "type": "string"
+    },
+    "balance_usd": {
+      "default": 0.0,
+      "title": "Balance Usd",
+      "type": "number"
+    },
+    "currency": {
+      "default": "USD",
+      "title": "Currency",
+      "type": "string"
+    },
+    "authorized_users": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Authorized Users",
+      "type": "array"
+    },
+    "spending_limit_usd": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Spending Limit Usd"
+    }
+  },
+  "required": [
+    "entity_id",
+    "schema_version",
+    "created_at",
+    "updated_at",
+    "resource_type",
+    "owner_id",
+    "organization_id",
+    "classification",
+    "account_number",
+    "account_type"
+  ],
+  "title": "FinanceAccountRecord",
+  "type": "object"
+}

@@ -1,0 +1,88 @@
+fixture_id: core:governance@1.0.0
+domain_id: core:governance@1.0.0
+schema_version: "1.0.0"
+fixture_version: "1.0.0"
+seed: 42
+
+files:
+  - path: users.json
+    format: json
+    collection: users
+    visibility: private
+    checksum: "4d0ce815be7aaeb8c454e3f59ab7887e8a922a5ebea99e97ebc0e195654e2c50"
+
+  - path: resources.json
+    format: json
+    collection: resources
+    visibility: private
+    checksum: "c7b9fe2bc6c77b555bac756673c94e947848e67cb0cedae8d980cf458a5ff091"
+
+  - path: deployment_configs.json
+    format: json
+    collection: deployment_configs
+    visibility: private
+    checksum: "ee9b10e3a05830c97d3d9809dc8b8652d3c62d43cb7d1eb4654cfca429efbfa4"
+
+  - path: approval_matrices.json
+    format: json
+    collection: approval_matrices
+    visibility: private
+    checksum: "8e33b5a89cd798876e1e8638d04217961f8a4366e9c90fdeb1440f9b7b785d85"
+
+  - path: monitoring_rules.json
+    format: json
+    collection: monitoring_rules
+    visibility: private
+    checksum: "eb7c7a6fae14ebbc236ca3e9feae56f8994e29358c767f888a90b2d52883e525"
+
+  - path: audit_logs.jsonl
+    format: jsonl
+    collection: audit_logs
+    visibility: private
+    checksum: "72e1479c25632184d0e01d85b6fbce7677424e6596a339adc3e68af3e433b605"
+
+  - path: permissions.json
+    format: json
+    collection: permissions
+    visibility: private
+    checksum: "2c869bc954216eb58db660b34c1f8b6d89297cb1a1b3714f2668f650d2a21af5"
+
+  - path: approvals.json
+    format: json
+    collection: approvals
+    visibility: private
+    checksum: "cac72346f3c2b66833793b6e27ff3c21eb6f0dcce75301ef3a541ee4e8a74638"
+
+  - path: policies.json
+    format: json
+    collection: policies
+    visibility: private
+    checksum: "3d1f811e4d7792deca37c6ca25840c7c299c0b58b99ea84e4ad542a4f7d7f286"
+
+  - path: hidden/grading.json
+    format: json
+    collection: grading
+    visibility: hidden
+    checksum: "bc2de8b34a7e6aa89b7918b042ad3cd5758a62dcf08aab213169164e5d314cc9"
+
+  - path: hidden/attack_state.json
+    format: json
+    collection: attack_state
+    visibility: hidden
+    checksum: "ab5523ca72c603604e41c92087f521b2ce364d0dc96dd4d5b359b4c8fe2c67e6"
+
+relationships:
+  - from: permissions.subject_id
+    to_any_of:
+      - users.entity_id
+
+invariants:
+  - governance.approval_quorum_maintained
+  - governance.monitoring_threshold_above_floor
+  - governance.audit_log_append_only
+
+provenance:
+  created_by: benchmark-team
+  created_at: "2026-01-01T00:00:00Z"
+  source: hand-authored
+  license: Apache-2.0

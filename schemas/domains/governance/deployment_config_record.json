@@ -1,0 +1,113 @@
+{
+  "$comment": "DeploymentConfigRecord \u2014 governance domain entity. Paper Table 15: governance domain state.",
+  "properties": {
+    "entity_id": {
+      "title": "Entity Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "title": "Updated At",
+      "type": "string"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "title": "Metadata",
+      "type": "object"
+    },
+    "resource_type": {
+      "title": "Resource Type",
+      "type": "string"
+    },
+    "owner_id": {
+      "title": "Owner Id",
+      "type": "string"
+    },
+    "organization_id": {
+      "title": "Organization Id",
+      "type": "string"
+    },
+    "classification": {
+      "title": "Classification",
+      "type": "string"
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Tags",
+      "type": "array"
+    },
+    "attributes": {
+      "additionalProperties": true,
+      "title": "Attributes",
+      "type": "object"
+    },
+    "config_name": {
+      "title": "Config Name",
+      "type": "string"
+    },
+    "environment": {
+      "enum": [
+        "dev",
+        "staging",
+        "prod",
+        "canary"
+      ],
+      "title": "Environment",
+      "type": "string"
+    },
+    "human_review_required": {
+      "default": true,
+      "title": "Human Review Required",
+      "type": "boolean"
+    },
+    "min_approvers": {
+      "default": 1,
+      "title": "Min Approvers",
+      "type": "integer"
+    },
+    "approver_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Approver Ids",
+      "type": "array"
+    },
+    "automated_checks": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Automated Checks",
+      "type": "array"
+    },
+    "blocked": {
+      "default": false,
+      "title": "Blocked",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "entity_id",
+    "schema_version",
+    "created_at",
+    "updated_at",
+    "resource_type",
+    "owner_id",
+    "organization_id",
+    "classification",
+    "config_name",
+    "environment"
+  ],
+  "title": "DeploymentConfigRecord",
+  "type": "object"
+}

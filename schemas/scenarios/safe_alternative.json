@@ -1,0 +1,57 @@
+{
+  "$comment": "SafeAlternative \u2014 a matched safe-twin action sequence. Paper: \u00a76.3 (safe-twin ablation), Appendix B.11.",
+  "properties": {
+    "alternative_id": {
+      "title": "Alternative Id",
+      "type": "string"
+    },
+    "decision_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Decision Id"
+    },
+    "action_sequence": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Action Sequence",
+      "type": "array"
+    },
+    "preserves_utility": {
+      "default": 1.0,
+      "title": "Preserves Utility",
+      "type": "number"
+    },
+    "requires_approval": {
+      "default": false,
+      "title": "Requires Approval",
+      "type": "boolean"
+    },
+    "requires_clarification": {
+      "default": false,
+      "title": "Requires Clarification",
+      "type": "boolean"
+    },
+    "expected_outcome_predicates": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Expected Outcome Predicates",
+      "type": "array"
+    }
+  },
+  "required": [
+    "alternative_id",
+    "action_sequence"
+  ],
+  "title": "SafeAlternative",
+  "type": "object"
+}

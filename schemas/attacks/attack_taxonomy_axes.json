@@ -1,0 +1,90 @@
+{
+  "$comment": "BLINDSPOT attack family taxonomy. Paper: \u00a74.1, Table 4.",
+  "$schema": "https://json-schema.org/draft/2020-12",
+  "title": "AttackTaxonomy",
+  "description": "Six-axis characterization of attack families. Each axis annotation is non-exclusive.",
+  "type": "object",
+  "properties": {
+    "source": {
+      "description": "Origin of adversarial influence. Paper Table 4: Source.",
+      "type": "string",
+      "enum": [
+        "user",
+        "environment",
+        "tool",
+        "memory",
+        "mixed"
+      ]
+    },
+    "target": {
+      "description": "Component being influenced. Paper Table 4: Target.",
+      "type": "string",
+      "enum": [
+        "authorization",
+        "intent",
+        "plan",
+        "state_belief",
+        "tool_selection",
+        "tool_arguments",
+        "knowledge",
+        "memory",
+        "recovery"
+      ]
+    },
+    "mechanism": {
+      "description": "Means of attack. Paper Table 4: Mechanism.",
+      "type": "string",
+      "enum": [
+        "social_engineering",
+        "indirect_injection",
+        "authority_spoofing",
+        "decomposition",
+        "retrieval_poisoning",
+        "output_spoofing",
+        "approval_laundering",
+        "state_corruption",
+        "observation_poisoning",
+        "provenance_stripping",
+        "privilege_escalation"
+      ]
+    },
+    "temporal_pattern": {
+      "description": "Interaction pattern over turns. Paper Table 4: Temporal.",
+      "type": "string",
+      "enum": [
+        "one_shot",
+        "gradual",
+        "staged",
+        "delayed",
+        "persistent",
+        "adaptive",
+        "opportunistic",
+        "cross_session"
+      ]
+    },
+    "harm_category": {
+      "description": "Resulting consequence. Paper Table 4: Harm.",
+      "type": "string",
+      "enum": [
+        "unauthorized_disclosure",
+        "privilege_misuse",
+        "unsafe_state_mutation",
+        "policy_bypass",
+        "confidentiality",
+        "integrity",
+        "availability",
+        "compliance_violation"
+      ]
+    },
+    "knowledge_tier": {
+      "description": "Information available to the adversary. Paper Table 4: Knowledge.",
+      "type": "string",
+      "enum": [
+        "public",
+        "tool_calls",
+        "partial_state",
+        "full_state"
+      ]
+    }
+  }
+}

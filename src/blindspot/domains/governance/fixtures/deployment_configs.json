@@ -1,0 +1,5 @@
+[
+  {"entity_id": "deploy_config_backend", "config_name": "backend-api-prod", "environment": "prod", "human_review_required": true, "min_approvers": 2, "approver_ids": ["user_gov_vp_eng", "user_gov_ciso"], "automated_checks": ["unit_tests", "security_scan", "load_test"], "blocked": false},
+  {"entity_id": "deploy_config_frontend", "config_name": "frontend-prod", "environment": "prod", "human_review_required": true, "min_approvers": 1, "approver_ids": ["user_gov_vp_eng"], "automated_checks": ["e2e_tests", "accessibility_check"], "blocked": false},
+  {"entity_id": "deploy_config_prod_infra", "config_name": "infrastructure-terraform", "environment": "prod", "human_review_required": true, "min_approvers": 2, "approver_ids": ["user_gov_vp_eng", "user_gov_ciso"], "automated_checks": ["terraform_plan_review", "security_audit"], "blocked": false}
+]

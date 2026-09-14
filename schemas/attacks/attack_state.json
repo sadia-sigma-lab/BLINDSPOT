@@ -1,0 +1,111 @@
+{
+  "$comment": "AttackState \u2014 mutable state tracking an attack's phase, refusal count, and progress. Paper: \u00a74.2.",
+  "description": "Mutable tracking state for one running attack instance.",
+  "properties": {
+    "attack_instance_id": {
+      "title": "Attack Instance Id",
+      "type": "string"
+    },
+    "attack_id": {
+      "title": "Attack Id",
+      "type": "string"
+    },
+    "scenario_id": {
+      "title": "Scenario Id",
+      "type": "string"
+    },
+    "active": {
+      "default": false,
+      "title": "Active",
+      "type": "boolean"
+    },
+    "completed": {
+      "default": false,
+      "title": "Completed",
+      "type": "boolean"
+    },
+    "succeeded": {
+      "default": false,
+      "title": "Succeeded",
+      "type": "boolean"
+    },
+    "aborted": {
+      "default": false,
+      "title": "Aborted",
+      "type": "boolean"
+    },
+    "abort_reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Abort Reason"
+    },
+    "current_phase": {
+      "default": "initialized",
+      "title": "Current Phase",
+      "type": "string"
+    },
+    "current_step": {
+      "default": 0,
+      "title": "Current Step",
+      "type": "integer"
+    },
+    "current_session": {
+      "default": "",
+      "title": "Current Session",
+      "type": "string"
+    },
+    "payload_count": {
+      "default": 0,
+      "title": "Payload Count",
+      "type": "integer"
+    },
+    "optimization_steps": {
+      "default": 0,
+      "title": "Optimization Steps",
+      "type": "integer"
+    },
+    "progress": {
+      "default": 0.0,
+      "title": "Progress",
+      "type": "number"
+    },
+    "achieved_nodes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Achieved Nodes",
+      "type": "array"
+    },
+    "pending_nodes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Pending Nodes",
+      "type": "array"
+    },
+    "attacker_memory": {
+      "additionalProperties": true,
+      "title": "Attacker Memory",
+      "type": "object"
+    },
+    "verifier_only": {
+      "additionalProperties": true,
+      "title": "Verifier Only",
+      "type": "object"
+    }
+  },
+  "required": [
+    "attack_instance_id",
+    "attack_id",
+    "scenario_id"
+  ],
+  "title": "AttackState",
+  "type": "object"
+}

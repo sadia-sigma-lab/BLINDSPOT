@@ -1,0 +1,82 @@
+{
+  "$comment": "DifficultyProfile \u2014 computed difficulty features (dependency span, tool calls, policy complexity).",
+  "properties": {
+    "level": {
+      "default": 1,
+      "title": "Level",
+      "type": "integer"
+    },
+    "interaction_steps": {
+      "default": 5,
+      "title": "Interaction Steps",
+      "type": "integer"
+    },
+    "tool_calls": {
+      "default": 3,
+      "title": "Tool Calls",
+      "type": "integer"
+    },
+    "dependency_span": {
+      "default": 1,
+      "title": "Dependency Span",
+      "type": "integer"
+    },
+    "dependency_breadth": {
+      "default": 1,
+      "title": "Dependency Breadth",
+      "type": "integer"
+    },
+    "state_mutations": {
+      "default": 1,
+      "title": "State Mutations",
+      "type": "integer"
+    },
+    "sessions": {
+      "default": 1,
+      "title": "Sessions",
+      "type": "integer"
+    },
+    "delayed_effect_gap": {
+      "default": 0,
+      "title": "Delayed Effect Gap",
+      "type": "integer"
+    },
+    "policy_complexity": {
+      "default": 1,
+      "title": "Policy Complexity",
+      "type": "integer"
+    },
+    "actor_count": {
+      "default": 1,
+      "title": "Actor Count",
+      "type": "integer"
+    },
+    "tool_diversity": {
+      "default": 1,
+      "title": "Tool Diversity",
+      "type": "integer"
+    },
+    "attack_adaptivity": {
+      "default": 0,
+      "title": "Attack Adaptivity",
+      "type": "integer"
+    },
+    "partial_observability": {
+      "default": 0,
+      "title": "Partial Observability",
+      "type": "integer"
+    },
+    "recovery_complexity": {
+      "default": 0,
+      "title": "Recovery Complexity",
+      "type": "integer"
+    },
+    "score": {
+      "default": 0.0,
+      "title": "Score",
+      "type": "number"
+    }
+  },
+  "title": "DifficultyProfile",
+  "type": "object"
+}

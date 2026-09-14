@@ -1,0 +1,135 @@
+{
+  "$comment": "ToolSpecification \u2014 tool identity, read/write scopes, authorization requirements. Paper: Appendix B.7.",
+  "$defs": {
+    "ComponentID": {
+      "description": "Globally unique, stable identifier for a registered benchmark component.",
+      "properties": {
+        "namespace": {
+          "title": "Namespace",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "namespace",
+        "name",
+        "version"
+      ],
+      "title": "ComponentID",
+      "type": "object"
+    }
+  },
+  "description": "Declarative metadata for a benchmark tool.",
+  "properties": {
+    "tool_id": {
+      "$ref": "#/$defs/ComponentID"
+    },
+    "display_name": {
+      "title": "Display Name",
+      "type": "string"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string"
+    },
+    "read_scopes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Read Scopes",
+      "type": "array"
+    },
+    "write_scopes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Write Scopes",
+      "type": "array"
+    },
+    "required_permissions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Permissions",
+      "type": "array"
+    },
+    "requires_approval": {
+      "default": false,
+      "title": "Requires Approval",
+      "type": "boolean"
+    },
+    "approval_action": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Approval Action"
+    },
+    "reversible": {
+      "default": false,
+      "title": "Reversible",
+      "type": "boolean"
+    },
+    "idempotent": {
+      "default": false,
+      "title": "Idempotent",
+      "type": "boolean"
+    },
+    "side_effect_level": {
+      "enum": [
+        "none",
+        "read",
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "title": "Side Effect Level",
+      "type": "string"
+    },
+    "visibility": {
+      "default": "public",
+      "enum": [
+        "public",
+        "restricted",
+        "hidden"
+      ],
+      "title": "Visibility",
+      "type": "string"
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Tags",
+      "type": "array"
+    },
+    "deprecated": {
+      "default": false,
+      "title": "Deprecated",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "tool_id",
+    "display_name",
+    "description",
+    "read_scopes",
+    "write_scopes",
+    "side_effect_level"
+  ],
+  "title": "ToolSpecification",
+  "type": "object"
+}

@@ -1,0 +1,121 @@
+{
+  "$comment": "DeploymentRecord \u2014 software_ops domain entity. Paper Table 15: software_ops domain state.",
+  "properties": {
+    "entity_id": {
+      "title": "Entity Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "title": "Updated At",
+      "type": "string"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "title": "Metadata",
+      "type": "object"
+    },
+    "resource_type": {
+      "title": "Resource Type",
+      "type": "string"
+    },
+    "owner_id": {
+      "title": "Owner Id",
+      "type": "string"
+    },
+    "organization_id": {
+      "title": "Organization Id",
+      "type": "string"
+    },
+    "classification": {
+      "title": "Classification",
+      "type": "string"
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Tags",
+      "type": "array"
+    },
+    "attributes": {
+      "additionalProperties": true,
+      "title": "Attributes",
+      "type": "object"
+    },
+    "deployment_id": {
+      "title": "Deployment Id",
+      "type": "string"
+    },
+    "pipeline_id": {
+      "title": "Pipeline Id",
+      "type": "string"
+    },
+    "environment": {
+      "enum": [
+        "dev",
+        "staging",
+        "prod",
+        "canary"
+      ],
+      "title": "Environment",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "approved",
+        "running",
+        "succeeded",
+        "failed",
+        "rolled_back"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "approved_by": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Approved By",
+      "type": "array"
+    },
+    "rollback_target": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Rollback Target"
+    }
+  },
+  "required": [
+    "entity_id",
+    "schema_version",
+    "created_at",
+    "updated_at",
+    "resource_type",
+    "owner_id",
+    "organization_id",
+    "classification",
+    "deployment_id",
+    "pipeline_id",
+    "environment",
+    "status"
+  ],
+  "title": "DeploymentRecord",
+  "type": "object"
+}

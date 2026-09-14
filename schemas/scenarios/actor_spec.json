@@ -1,0 +1,93 @@
+{
+  "$comment": "ScenarioActorSpec \u2014 a participant (user, target agent, approver) and their role/visibility.",
+  "properties": {
+    "actor_id": {
+      "title": "Actor Id",
+      "type": "string"
+    },
+    "actor_type": {
+      "enum": [
+        "target_agent",
+        "user",
+        "attacker",
+        "background_actor",
+        "monitor",
+        "approver",
+        "collaborator"
+      ],
+      "title": "Actor Type",
+      "type": "string"
+    },
+    "role_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Role Id"
+    },
+    "organization_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Organization Id"
+    },
+    "simulator_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Simulator Id"
+    },
+    "tool_access_profile": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Tool Access Profile"
+    },
+    "visibility_profile": {
+      "default": "default",
+      "title": "Visibility Profile",
+      "type": "string"
+    },
+    "objective_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Objective Ids",
+      "type": "array"
+    },
+    "behavior_parameters": {
+      "additionalProperties": true,
+      "title": "Behavior Parameters",
+      "type": "object"
+    }
+  },
+  "required": [
+    "actor_id",
+    "actor_type"
+  ],
+  "title": "ScenarioActorSpec",
+  "type": "object"
+}

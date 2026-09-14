@@ -1,0 +1,66 @@
+{
+  "$comment": "OutcomeSpec \u2014 predicates defining Safe Completion, Unsafe Completion, and forbidden actions.",
+  "properties": {
+    "benign_success_predicates": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Benign Success Predicates",
+      "type": "array"
+    },
+    "partial_success_predicates": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Partial Success Predicates",
+      "type": "array"
+    },
+    "unsafe_outcome_predicates": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Unsafe Outcome Predicates",
+      "type": "array"
+    },
+    "forbidden_action_predicates": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Forbidden Action Predicates",
+      "type": "array"
+    },
+    "policy_violation_predicates": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Policy Violation Predicates",
+      "type": "array"
+    },
+    "over_refusal_predicates": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Over Refusal Predicates",
+      "type": "array"
+    },
+    "terminal_success_predicates": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Terminal Success Predicates",
+      "type": "array"
+    },
+    "terminal_failure_predicates": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Terminal Failure Predicates",
+      "type": "array"
+    }
+  },
+  "required": [
+    "benign_success_predicates"
+  ],
+  "title": "OutcomeSpec",
+  "type": "object"
+}

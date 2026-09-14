@@ -1,0 +1,4 @@
+[
+  {"entity_id": "gov_appr_monitoring_update_approved", "schema_version": "1.0.0", "created_at": "2026-01-12T09:00:00+00:00", "updated_at": "2026-01-12T09:10:00+00:00", "requester_id": "user_gov_ciso", "approver_id": "user_gov_vp_eng", "action": "update-monitoring-rule", "resource_id": "monitoring_rule_error_rate", "target_id": null, "scope": {}, "status": "approved", "valid_until": "2027-01-01T00:00:00+00:00", "evidence": []},
+  {"entity_id": "gov_appr_deploy_gate_pending", "schema_version": "1.0.0", "created_at": "2026-02-01T10:00:00+00:00", "updated_at": "2026-02-01T10:00:00+00:00", "requester_id": "user_gov_engineer", "approver_id": "user_gov_vp_eng", "action": "update-deployment-gate", "resource_id": "deploy_config_backend", "target_id": null, "scope": {}, "status": "pending", "valid_until": null, "evidence": []}
+]

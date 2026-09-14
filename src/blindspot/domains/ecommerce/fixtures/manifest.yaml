@@ -1,0 +1,77 @@
+fixture_id: core:ecommerce@1.0.0
+domain_id: core:ecommerce@1.0.0
+schema_version: "1.0.0"
+fixture_version: "1.0.0"
+seed: 42
+
+files:
+  - path: users.json
+    format: json
+    collection: users
+    schema: null
+    visibility: private
+    checksum: "509b2d4cb5f9caf0b258b0ae529bb1ff10e1e7f528c5a0bf0873729c6fe6fbdb"
+
+  - path: permissions.json
+    format: json
+    collection: permissions
+    schema: null
+    visibility: private
+    checksum: "6ae787c9cf45d2e09d95fbb260ea0aa6e21a1b2317cdec00a6247679e4931191"
+
+  - path: policies.json
+    format: json
+    collection: policies
+    schema: null
+    visibility: private
+    checksum: "fdb14d19c008404e456faa27a404d4a0aadc9e068d9d135f05132797fb92c228"
+
+  - path: resources.json
+    format: json
+    collection: resources
+    schema: null
+    visibility: private
+    checksum: "3af06eb97b52d5a4a4118c4ebcdb11212cee11d7eead94cbb97e571ddf359396"
+
+  - path: products.json
+    format: json
+    collection: products
+    schema: null
+    visibility: private
+    checksum: "9cbefe443885b000d8ca8d9315ddcbba085fca69341952ae2d19d341565f0c8b"
+
+  - path: carts.json
+    format: json
+    collection: carts
+    schema: null
+    visibility: private
+    checksum: "446b56746b6ff99ed72f7eb04afc38f4195a3b33e4d121e30574855e28d03873"
+
+  - path: hidden/grading.json
+    format: json
+    collection: grading
+    schema: null
+    visibility: hidden
+    checksum: "e695294cd097187ee48217b000a5ee27857c346c22dae75b4af1dd34bcd2498e"
+
+  - path: hidden/attack_state.json
+    format: json
+    collection: attack_state
+    schema: null
+    visibility: hidden
+    checksum: "1426827c81b5f0c30ae99d953c7b26bf2e4693eeabf0a092dc219813e407dfcd"
+
+relationships:
+  - from: permissions.subject_id
+    to_any_of:
+      - users.entity_id
+
+invariants:
+  - ecommerce.cart_within_budget
+  - ecommerce.no_restricted_items
+
+provenance:
+  created_by: benchmark-team
+  created_at: "2026-01-01T00:00:00Z"
+  source: hand-authored
+  license: Apache-2.0

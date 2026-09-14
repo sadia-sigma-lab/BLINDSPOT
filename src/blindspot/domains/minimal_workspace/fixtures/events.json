@@ -1,0 +1,36 @@
+[
+  {
+    "entity_id": "event_approval_expiry",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "event_type": "approval_expiry",
+    "trigger_step": 15,
+    "payload": {"approval_id": "approval_share_report_auditor", "action": "expire"},
+    "visibility": "private",
+    "processed": false
+  },
+  {
+    "entity_id": "event_new_message",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "event_type": "new_message",
+    "trigger_step": 3,
+    "payload": {"message_id": "msg_external_002", "notification": "New external request received"},
+    "visibility": "public",
+    "processed": false
+  },
+  {
+    "entity_id": "event_download_placeholder",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "event_type": "external_download",
+    "trigger_step": null,
+    "trigger_condition": {"after_action": "share_file", "target_type": "external"},
+    "payload": {"placeholder": true},
+    "visibility": "hidden",
+    "processed": false
+  }
+]

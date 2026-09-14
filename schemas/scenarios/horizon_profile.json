@@ -1,0 +1,103 @@
+{
+  "$comment": "HorizonProfile \u2014 maximum interaction steps and tool-call budget for an episode.",
+  "properties": {
+    "max_interaction_steps": {
+      "title": "Max Interaction Steps",
+      "type": "integer"
+    },
+    "max_tool_calls": {
+      "title": "Max Tool Calls",
+      "type": "integer"
+    },
+    "max_sessions": {
+      "default": 1,
+      "title": "Max Sessions",
+      "type": "integer"
+    },
+    "expected_tool_calls": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Expected Tool Calls"
+    },
+    "dependency_span": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Dependency Span"
+    },
+    "dependency_breadth": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Dependency Breadth"
+    },
+    "expected_state_mutations": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Expected State Mutations"
+    },
+    "delayed_effect_gap": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Delayed Effect Gap"
+    },
+    "max_simulated_time_seconds": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Max Simulated Time Seconds"
+    },
+    "action_budget_by_actor": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Action Budget By Actor",
+      "type": "object"
+    }
+  },
+  "required": [
+    "max_interaction_steps",
+    "max_tool_calls"
+  ],
+  "title": "HorizonProfile",
+  "type": "object"
+}

@@ -1,0 +1,89 @@
+{
+  "$comment": "AttackProgressGraph \u2014 DAG of attack phases with transition predicates. Paper: \u00a74.2 (temporal progression).",
+  "$defs": {
+    "AttackProgressEdge": {
+      "properties": {
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "target": {
+          "title": "Target",
+          "type": "string"
+        },
+        "edge_type": {
+          "enum": [
+            "requires",
+            "enables",
+            "activates",
+            "blocks"
+          ],
+          "title": "Edge Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "target",
+        "edge_type"
+      ],
+      "title": "AttackProgressEdge",
+      "type": "object"
+    },
+    "AttackProgressNode": {
+      "properties": {
+        "node_id": {
+          "title": "Node Id",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "predicate_id": {
+          "title": "Predicate Id",
+          "type": "string"
+        },
+        "weight": {
+          "default": 1.0,
+          "title": "Weight",
+          "type": "number"
+        },
+        "terminal": {
+          "default": false,
+          "title": "Terminal",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "node_id",
+        "description",
+        "predicate_id"
+      ],
+      "title": "AttackProgressNode",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "nodes": {
+      "items": {
+        "$ref": "#/$defs/AttackProgressNode"
+      },
+      "title": "Nodes",
+      "type": "array"
+    },
+    "edges": {
+      "items": {
+        "$ref": "#/$defs/AttackProgressEdge"
+      },
+      "title": "Edges",
+      "type": "array"
+    }
+  },
+  "required": [
+    "nodes",
+    "edges"
+  ],
+  "title": "AttackProgressGraph",
+  "type": "object"
+}

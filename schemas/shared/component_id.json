@@ -1,0 +1,25 @@
+{
+  "$comment": "ComponentID \u2014 versioned component identifier used for scenarios, attacks, tools, and policies. Format: namespace:name@version.",
+  "description": "Globally unique, stable identifier for a registered benchmark component.",
+  "properties": {
+    "namespace": {
+      "title": "Namespace",
+      "type": "string"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "version": {
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "namespace",
+    "name",
+    "version"
+  ],
+  "title": "ComponentID",
+  "type": "object"
+}

@@ -1,0 +1,234 @@
+{
+  "$comment": "AttackTraceStep \u2014 one step in the attack execution trace, including phase, payload delivered, and success status.",
+  "$defs": {
+    "AttackBudgetUsage": {
+      "description": "Running usage counters for one attack instance.",
+      "properties": {
+        "turns": {
+          "default": 0,
+          "title": "Turns",
+          "type": "integer"
+        },
+        "payloads": {
+          "default": 0,
+          "title": "Payloads",
+          "type": "integer"
+        },
+        "tool_influences": {
+          "default": 0,
+          "title": "Tool Influences",
+          "type": "integer"
+        },
+        "memory_writes": {
+          "default": 0,
+          "title": "Memory Writes",
+          "type": "integer"
+        },
+        "sessions": {
+          "default": 0,
+          "title": "Sessions",
+          "type": "integer"
+        },
+        "tokens": {
+          "default": 0,
+          "title": "Tokens",
+          "type": "integer"
+        },
+        "optimization_steps": {
+          "default": 0,
+          "title": "Optimization Steps",
+          "type": "integer"
+        }
+      },
+      "title": "AttackBudgetUsage",
+      "type": "object"
+    },
+    "AttackHook": {
+      "enum": [
+        "before_session",
+        "after_session",
+        "before_user_message",
+        "after_user_message",
+        "before_observation",
+        "after_observation",
+        "before_action",
+        "after_action",
+        "before_tool",
+        "after_tool",
+        "before_event",
+        "after_event",
+        "before_memory_write",
+        "after_memory_write",
+        "on_episode_end"
+      ],
+      "title": "AttackHook",
+      "type": "string"
+    },
+    "AttackPredicateResult": {
+      "properties": {
+        "satisfied": {
+          "title": "Satisfied",
+          "type": "boolean"
+        },
+        "predicate_id": {
+          "title": "Predicate Id",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "details": {
+          "additionalProperties": true,
+          "title": "Details",
+          "type": "object"
+        }
+      },
+      "required": [
+        "satisfied",
+        "predicate_id"
+      ],
+      "title": "AttackPredicateResult",
+      "type": "object"
+    },
+    "AttackProgressResult": {
+      "properties": {
+        "progress": {
+          "title": "Progress",
+          "type": "number"
+        },
+        "achieved_nodes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Achieved Nodes",
+          "type": "array"
+        },
+        "newly_achieved_nodes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Newly Achieved Nodes",
+          "type": "array"
+        },
+        "blocked_nodes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Blocked Nodes",
+          "type": "array"
+        },
+        "terminal_nodes_achieved": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Terminal Nodes Achieved",
+          "type": "array"
+        },
+        "evidence": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "progress",
+        "achieved_nodes",
+        "newly_achieved_nodes",
+        "blocked_nodes",
+        "terminal_nodes_achieved"
+      ],
+      "title": "AttackProgressResult",
+      "type": "object"
+    }
+  },
+  "description": "Immutable record of one attack lifecycle event.",
+  "properties": {
+    "attack_instance_id": {
+      "title": "Attack Instance Id",
+      "type": "string"
+    },
+    "step": {
+      "title": "Step",
+      "type": "integer"
+    },
+    "session_id": {
+      "title": "Session Id",
+      "type": "string"
+    },
+    "hook": {
+      "$ref": "#/$defs/AttackHook"
+    },
+    "visible_context_hash": {
+      "title": "Visible Context Hash",
+      "type": "string"
+    },
+    "state_before": {
+      "additionalProperties": true,
+      "title": "State Before",
+      "type": "object"
+    },
+    "effect": {
+      "additionalProperties": true,
+      "title": "Effect",
+      "type": "object"
+    },
+    "state_after": {
+      "additionalProperties": true,
+      "title": "State After",
+      "type": "object"
+    },
+    "budget_usage": {
+      "$ref": "#/$defs/AttackBudgetUsage"
+    },
+    "progress": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AttackProgressResult"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "success": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AttackPredicateResult"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "provenance_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Provenance Ids",
+      "type": "array"
+    }
+  },
+  "required": [
+    "attack_instance_id",
+    "step",
+    "session_id",
+    "hook",
+    "visible_context_hash",
+    "state_before",
+    "effect",
+    "state_after",
+    "budget_usage"
+  ],
+  "title": "AttackTraceStep",
+  "type": "object"
+}

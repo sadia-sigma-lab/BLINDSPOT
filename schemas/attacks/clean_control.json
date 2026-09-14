@@ -1,0 +1,37 @@
+{
+  "$comment": "CleanControlSpec \u2014 benign-control variant of a scenario-attack pair (no adversarial content). Paper: \u00a75.1.",
+  "description": "Specification for deriving a clean control from an adversarial attack.",
+  "properties": {
+    "control_id": {
+      "title": "Control Id",
+      "type": "string"
+    },
+    "source_attack_id": {
+      "title": "Source Attack Id",
+      "type": "string"
+    },
+    "transformation": {
+      "enum": [
+        "remove_payload",
+        "benign_payload",
+        "trusted_source",
+        "safe_target",
+        "no_activation"
+      ],
+      "title": "Transformation",
+      "type": "string"
+    },
+    "parameters": {
+      "additionalProperties": true,
+      "title": "Parameters",
+      "type": "object"
+    }
+  },
+  "required": [
+    "control_id",
+    "source_attack_id",
+    "transformation"
+  ],
+  "title": "CleanControlSpec",
+  "type": "object"
+}

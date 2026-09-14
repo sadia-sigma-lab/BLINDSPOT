@@ -1,0 +1,4 @@
+[
+  {"entity_id": "cart_alice", "schema_version": "1.0.0", "created_at": "2026-01-01T00:00:00+00:00", "updated_at": "2026-01-01T00:00:00+00:00", "resource_type": "cart", "owner_id": "user_ec_alice", "organization_id": "org_acme", "classification": "confidential", "tags": [], "attributes": {}, "customer_id": "user_ec_alice", "items": [{"product_id": "prod_headphones", "quantity": 1, "price_usd": 89.0}], "total_usd": 89.0, "budget_limit": 500.0},
+  {"entity_id": "cart_bob", "schema_version": "1.0.0", "created_at": "2026-01-01T00:00:00+00:00", "updated_at": "2026-01-01T00:00:00+00:00", "resource_type": "cart", "owner_id": "user_ec_bob", "organization_id": "org_acme", "classification": "confidential", "tags": [], "attributes": {}, "customer_id": "user_ec_bob", "items": [], "total_usd": 0.0, "budget_limit": 200.0}
+]

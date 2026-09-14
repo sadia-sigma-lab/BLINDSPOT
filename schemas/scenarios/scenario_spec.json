@@ -1,0 +1,1281 @@
+{
+  "$comment": "BLINDSPOT FullScenarioSpec \u2014 complete scenario definition. Paper: Appendix B.5.",
+  "$defs": {
+    "BenignTaskSpec": {
+      "properties": {
+        "task_id": {
+          "title": "Task Id",
+          "type": "string"
+        },
+        "instruction": {
+          "title": "Instruction",
+          "type": "string"
+        },
+        "user_actor_id": {
+          "title": "User Actor Id",
+          "type": "string"
+        },
+        "target_actor_id": {
+          "title": "Target Actor Id",
+          "type": "string"
+        },
+        "goal_predicates": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Goal Predicates",
+          "type": "array"
+        },
+        "required_information": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Required Information",
+          "type": "array"
+        },
+        "expected_subgoals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Expected Subgoals",
+          "type": "array"
+        },
+        "allowed_variants": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Allowed Variants",
+          "type": "array"
+        },
+        "optional_goals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Optional Goals",
+          "type": "array"
+        },
+        "communication_requirements": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Communication Requirements",
+          "type": "array"
+        }
+      },
+      "required": [
+        "task_id",
+        "instruction",
+        "user_actor_id",
+        "target_actor_id",
+        "goal_predicates"
+      ],
+      "title": "BenignTaskSpec",
+      "type": "object"
+    },
+    "ComponentID": {
+      "description": "Globally unique, stable identifier for a registered benchmark component.",
+      "properties": {
+        "namespace": {
+          "title": "Namespace",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "namespace",
+        "name",
+        "version"
+      ],
+      "title": "ComponentID",
+      "type": "object"
+    },
+    "CriticalDecisionPoint": {
+      "properties": {
+        "decision_id": {
+          "title": "Decision Id",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "activation_predicate": {
+          "title": "Activation Predicate",
+          "type": "string"
+        },
+        "candidate_action_classes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Candidate Action Classes",
+          "type": "array"
+        },
+        "preferred_safe_actions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Preferred Safe Actions",
+          "type": "array"
+        },
+        "unsafe_actions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Unsafe Actions",
+          "type": "array"
+        },
+        "point_of_no_return": {
+          "default": false,
+          "title": "Point Of No Return",
+          "type": "boolean"
+        },
+        "expected_information_needed": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Expected Information Needed",
+          "type": "array"
+        }
+      },
+      "required": [
+        "decision_id",
+        "description",
+        "activation_predicate",
+        "candidate_action_classes",
+        "preferred_safe_actions",
+        "unsafe_actions"
+      ],
+      "title": "CriticalDecisionPoint",
+      "type": "object"
+    },
+    "DifficultyProfile": {
+      "properties": {
+        "level": {
+          "default": 1,
+          "title": "Level",
+          "type": "integer"
+        },
+        "interaction_steps": {
+          "default": 5,
+          "title": "Interaction Steps",
+          "type": "integer"
+        },
+        "tool_calls": {
+          "default": 3,
+          "title": "Tool Calls",
+          "type": "integer"
+        },
+        "dependency_span": {
+          "default": 1,
+          "title": "Dependency Span",
+          "type": "integer"
+        },
+        "dependency_breadth": {
+          "default": 1,
+          "title": "Dependency Breadth",
+          "type": "integer"
+        },
+        "state_mutations": {
+          "default": 1,
+          "title": "State Mutations",
+          "type": "integer"
+        },
+        "sessions": {
+          "default": 1,
+          "title": "Sessions",
+          "type": "integer"
+        },
+        "delayed_effect_gap": {
+          "default": 0,
+          "title": "Delayed Effect Gap",
+          "type": "integer"
+        },
+        "policy_complexity": {
+          "default": 1,
+          "title": "Policy Complexity",
+          "type": "integer"
+        },
+        "actor_count": {
+          "default": 1,
+          "title": "Actor Count",
+          "type": "integer"
+        },
+        "tool_diversity": {
+          "default": 1,
+          "title": "Tool Diversity",
+          "type": "integer"
+        },
+        "attack_adaptivity": {
+          "default": 0,
+          "title": "Attack Adaptivity",
+          "type": "integer"
+        },
+        "partial_observability": {
+          "default": 0,
+          "title": "Partial Observability",
+          "type": "integer"
+        },
+        "recovery_complexity": {
+          "default": 0,
+          "title": "Recovery Complexity",
+          "type": "integer"
+        },
+        "score": {
+          "default": 0.0,
+          "title": "Score",
+          "type": "number"
+        }
+      },
+      "title": "DifficultyProfile",
+      "type": "object"
+    },
+    "HazardSpec": {
+      "properties": {
+        "hazard_id": {
+          "title": "Hazard Id",
+          "type": "string"
+        },
+        "hazard_type": {
+          "enum": [
+            "ambiguous_instruction",
+            "stale_state",
+            "conflicting_policy",
+            "duplicate_identity",
+            "race_condition",
+            "tool_failure",
+            "expired_approval",
+            "partial_observability",
+            "delayed_effect",
+            "resource_constraint"
+          ],
+          "title": "Hazard Type",
+          "type": "string"
+        },
+        "activation": {
+          "additionalProperties": true,
+          "title": "Activation",
+          "type": "object"
+        },
+        "parameters": {
+          "additionalProperties": true,
+          "title": "Parameters",
+          "type": "object"
+        },
+        "expected_safe_behavior": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Expected Safe Behavior",
+          "type": "array"
+        }
+      },
+      "required": [
+        "hazard_id",
+        "hazard_type"
+      ],
+      "title": "HazardSpec",
+      "type": "object"
+    },
+    "HiddenScenarioState": {
+      "properties": {
+        "grading_target": {
+          "additionalProperties": true,
+          "title": "Grading Target",
+          "type": "object"
+        },
+        "attack_ground_truth": {
+          "additionalProperties": true,
+          "title": "Attack Ground Truth",
+          "type": "object"
+        },
+        "unsafe_precursor_nodes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Unsafe Precursor Nodes",
+          "type": "array"
+        },
+        "point_of_no_return_step": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Point Of No Return Step"
+        },
+        "safe_target_state_hash": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Safe Target State Hash"
+        },
+        "forbidden_outcomes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Forbidden Outcomes",
+          "type": "array"
+        },
+        "verifier_notes": {
+          "additionalProperties": true,
+          "title": "Verifier Notes",
+          "type": "object"
+        }
+      },
+      "title": "HiddenScenarioState",
+      "type": "object"
+    },
+    "HorizonProfile": {
+      "properties": {
+        "max_interaction_steps": {
+          "title": "Max Interaction Steps",
+          "type": "integer"
+        },
+        "max_tool_calls": {
+          "title": "Max Tool Calls",
+          "type": "integer"
+        },
+        "max_sessions": {
+          "default": 1,
+          "title": "Max Sessions",
+          "type": "integer"
+        },
+        "expected_tool_calls": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected Tool Calls"
+        },
+        "dependency_span": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dependency Span"
+        },
+        "dependency_breadth": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dependency Breadth"
+        },
+        "expected_state_mutations": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected State Mutations"
+        },
+        "delayed_effect_gap": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Delayed Effect Gap"
+        },
+        "max_simulated_time_seconds": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Simulated Time Seconds"
+        },
+        "action_budget_by_actor": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "Action Budget By Actor",
+          "type": "object"
+        }
+      },
+      "required": [
+        "max_interaction_steps",
+        "max_tool_calls"
+      ],
+      "title": "HorizonProfile",
+      "type": "object"
+    },
+    "InitialStateSpec": {
+      "properties": {
+        "fixture_id": {
+          "title": "Fixture Id",
+          "type": "string"
+        },
+        "fixture_version": {
+          "default": "1.0.0",
+          "title": "Fixture Version",
+          "type": "string"
+        },
+        "seed": {
+          "default": 42,
+          "title": "Seed",
+          "type": "integer"
+        },
+        "overrides": {
+          "items": {
+            "$ref": "#/$defs/StateOverride"
+          },
+          "title": "Overrides",
+          "type": "array"
+        },
+        "generated_resources": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Generated Resources",
+          "type": "array"
+        }
+      },
+      "required": [
+        "fixture_id"
+      ],
+      "title": "InitialStateSpec",
+      "type": "object"
+    },
+    "OutcomeSpec": {
+      "properties": {
+        "benign_success_predicates": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Benign Success Predicates",
+          "type": "array"
+        },
+        "partial_success_predicates": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Partial Success Predicates",
+          "type": "array"
+        },
+        "unsafe_outcome_predicates": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Unsafe Outcome Predicates",
+          "type": "array"
+        },
+        "forbidden_action_predicates": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Forbidden Action Predicates",
+          "type": "array"
+        },
+        "policy_violation_predicates": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Policy Violation Predicates",
+          "type": "array"
+        },
+        "over_refusal_predicates": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Over Refusal Predicates",
+          "type": "array"
+        },
+        "terminal_success_predicates": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Terminal Success Predicates",
+          "type": "array"
+        },
+        "terminal_failure_predicates": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Terminal Failure Predicates",
+          "type": "array"
+        }
+      },
+      "required": [
+        "benign_success_predicates"
+      ],
+      "title": "OutcomeSpec",
+      "type": "object"
+    },
+    "PolicyBinding": {
+      "properties": {
+        "policy_id": {
+          "title": "Policy Id",
+          "type": "string"
+        },
+        "version": {
+          "default": "1.0.0",
+          "title": "Version",
+          "type": "string"
+        },
+        "visible_to_actor_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Visible To Actor Ids",
+          "type": "array"
+        },
+        "structured_enforcement": {
+          "default": true,
+          "title": "Structured Enforcement",
+          "type": "boolean"
+        },
+        "human_readable_available": {
+          "default": true,
+          "title": "Human Readable Available",
+          "type": "boolean"
+        },
+        "priority_override": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Priority Override"
+        }
+      },
+      "required": [
+        "policy_id"
+      ],
+      "title": "PolicyBinding",
+      "type": "object"
+    },
+    "RecoverySpec": {
+      "properties": {
+        "recoverable": {
+          "title": "Recoverable",
+          "type": "boolean"
+        },
+        "detection_predicates": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Detection Predicates",
+          "type": "array"
+        },
+        "recovery_actions": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Recovery Actions",
+          "type": "array"
+        },
+        "recovery_success_predicates": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Recovery Success Predicates",
+          "type": "array"
+        },
+        "residual_harm_predicates": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Residual Harm Predicates",
+          "type": "array"
+        },
+        "recovery_deadline_steps": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Recovery Deadline Steps"
+        }
+      },
+      "required": [
+        "recoverable"
+      ],
+      "title": "RecoverySpec",
+      "type": "object"
+    },
+    "SafeAlternative": {
+      "properties": {
+        "alternative_id": {
+          "title": "Alternative Id",
+          "type": "string"
+        },
+        "decision_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Decision Id"
+        },
+        "action_sequence": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Action Sequence",
+          "type": "array"
+        },
+        "preserves_utility": {
+          "default": 1.0,
+          "title": "Preserves Utility",
+          "type": "number"
+        },
+        "requires_approval": {
+          "default": false,
+          "title": "Requires Approval",
+          "type": "boolean"
+        },
+        "requires_clarification": {
+          "default": false,
+          "title": "Requires Clarification",
+          "type": "boolean"
+        },
+        "expected_outcome_predicates": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Expected Outcome Predicates",
+          "type": "array"
+        }
+      },
+      "required": [
+        "alternative_id",
+        "action_sequence"
+      ],
+      "title": "SafeAlternative",
+      "type": "object"
+    },
+    "ScenarioActorSpec": {
+      "properties": {
+        "actor_id": {
+          "title": "Actor Id",
+          "type": "string"
+        },
+        "actor_type": {
+          "enum": [
+            "target_agent",
+            "user",
+            "attacker",
+            "background_actor",
+            "monitor",
+            "approver",
+            "collaborator"
+          ],
+          "title": "Actor Type",
+          "type": "string"
+        },
+        "role_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Role Id"
+        },
+        "organization_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Organization Id"
+        },
+        "simulator_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Simulator Id"
+        },
+        "tool_access_profile": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tool Access Profile"
+        },
+        "visibility_profile": {
+          "default": "default",
+          "title": "Visibility Profile",
+          "type": "string"
+        },
+        "objective_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Objective Ids",
+          "type": "array"
+        },
+        "behavior_parameters": {
+          "additionalProperties": true,
+          "title": "Behavior Parameters",
+          "type": "object"
+        }
+      },
+      "required": [
+        "actor_id",
+        "actor_type"
+      ],
+      "title": "ScenarioActorSpec",
+      "type": "object"
+    },
+    "ScenarioAttackBinding": {
+      "properties": {
+        "attack_id": {
+          "title": "Attack Id",
+          "type": "string"
+        },
+        "instance_id": {
+          "title": "Instance Id",
+          "type": "string"
+        },
+        "enabled": {
+          "default": true,
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "config": {
+          "additionalProperties": true,
+          "title": "Config",
+          "type": "object"
+        },
+        "activation_condition": {
+          "additionalProperties": true,
+          "title": "Activation Condition",
+          "type": "object"
+        },
+        "applies_to_sessions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Applies To Sessions",
+          "type": "array"
+        },
+        "expected_progress_graph_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected Progress Graph Id"
+        },
+        "clean_control_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Clean Control Id"
+        }
+      },
+      "required": [
+        "attack_id",
+        "instance_id"
+      ],
+      "title": "ScenarioAttackBinding",
+      "type": "object"
+    },
+    "ScenarioEventSpec": {
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "event_type": {
+          "title": "Event Type",
+          "type": "string"
+        },
+        "trigger": {
+          "additionalProperties": true,
+          "title": "Trigger",
+          "type": "object"
+        },
+        "payload": {
+          "additionalProperties": true,
+          "title": "Payload",
+          "type": "object"
+        },
+        "visibility": {
+          "default": "private",
+          "enum": [
+            "public",
+            "private",
+            "hidden"
+          ],
+          "title": "Visibility",
+          "type": "string"
+        },
+        "actor_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Actor Id"
+        },
+        "repeat": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Repeat"
+        },
+        "cancellation_conditions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Cancellation Conditions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "event_id",
+        "event_type",
+        "trigger"
+      ],
+      "title": "ScenarioEventSpec",
+      "type": "object"
+    },
+    "ScenarioMetadata": {
+      "properties": {
+        "scenario_id": {
+          "$ref": "#/$defs/ComponentID"
+        },
+        "display_name": {
+          "title": "Display Name",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "domain_id": {
+          "title": "Domain Id",
+          "type": "string"
+        },
+        "fixture_id": {
+          "title": "Fixture Id",
+          "type": "string"
+        },
+        "template_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Template Id"
+        },
+        "parent_scenario_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Parent Scenario Ids",
+          "type": "array"
+        },
+        "version": {
+          "default": "1.0.0",
+          "title": "Version",
+          "type": "string"
+        },
+        "author": {
+          "default": "benchmark-team",
+          "title": "Author",
+          "type": "string"
+        },
+        "source": {
+          "default": "hand_authored",
+          "enum": [
+            "hand_authored",
+            "generated",
+            "mutated",
+            "imported"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "license": {
+          "default": "Apache-2.0",
+          "title": "License",
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "benchmark_track": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Benchmark Track",
+          "type": "array"
+        },
+        "deprecated": {
+          "default": false,
+          "title": "Deprecated",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "scenario_id",
+        "display_name",
+        "description",
+        "domain_id",
+        "fixture_id"
+      ],
+      "title": "ScenarioMetadata",
+      "type": "object"
+    },
+    "ScenarioSplitMetadata": {
+      "properties": {
+        "split": {
+          "enum": [
+            "train",
+            "validation",
+            "test",
+            "challenge",
+            "hidden_test",
+            "community"
+          ],
+          "title": "Split",
+          "type": "string"
+        },
+        "domain_holdout": {
+          "default": false,
+          "title": "Domain Holdout",
+          "type": "boolean"
+        },
+        "attack_holdout": {
+          "default": false,
+          "title": "Attack Holdout",
+          "type": "boolean"
+        },
+        "tool_composition_holdout": {
+          "default": false,
+          "title": "Tool Composition Holdout",
+          "type": "boolean"
+        },
+        "horizon_holdout": {
+          "default": false,
+          "title": "Horizon Holdout",
+          "type": "boolean"
+        },
+        "policy_holdout": {
+          "default": false,
+          "title": "Policy Holdout",
+          "type": "boolean"
+        },
+        "actor_holdout": {
+          "default": false,
+          "title": "Actor Holdout",
+          "type": "boolean"
+        },
+        "temporal_holdout": {
+          "default": false,
+          "title": "Temporal Holdout",
+          "type": "boolean"
+        },
+        "template_family": {
+          "default": "",
+          "title": "Template Family",
+          "type": "string"
+        },
+        "leakage_group_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Leakage Group Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "split"
+      ],
+      "title": "ScenarioSplitMetadata",
+      "type": "object"
+    },
+    "StateOverride": {
+      "properties": {
+        "collection": {
+          "title": "Collection",
+          "type": "string"
+        },
+        "entity_id": {
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "operation": {
+          "title": "Operation",
+          "type": "string"
+        },
+        "patch": {
+          "additionalProperties": true,
+          "title": "Patch",
+          "type": "object"
+        }
+      },
+      "required": [
+        "collection",
+        "entity_id",
+        "operation"
+      ],
+      "title": "StateOverride",
+      "type": "object"
+    },
+    "ToolBindingSpec": {
+      "properties": {
+        "collection_id": {
+          "title": "Collection Id",
+          "type": "string"
+        },
+        "enabled_tool_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Enabled Tool Ids",
+          "type": "array"
+        },
+        "disabled_tool_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Disabled Tool Ids",
+          "type": "array"
+        },
+        "actor_overrides": {
+          "additionalProperties": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "title": "Actor Overrides",
+          "type": "object"
+        },
+        "failure_profiles": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Failure Profiles",
+          "type": "object"
+        },
+        "feature_flags": {
+          "additionalProperties": {
+            "type": "boolean"
+          },
+          "title": "Feature Flags",
+          "type": "object"
+        }
+      },
+      "required": [
+        "collection_id",
+        "enabled_tool_ids"
+      ],
+      "title": "ToolBindingSpec",
+      "type": "object"
+    }
+  },
+  "description": "Complete declarative scenario specification.",
+  "properties": {
+    "metadata": {
+      "$ref": "#/$defs/ScenarioMetadata"
+    },
+    "initial_state": {
+      "$ref": "#/$defs/InitialStateSpec"
+    },
+    "actors": {
+      "items": {
+        "$ref": "#/$defs/ScenarioActorSpec"
+      },
+      "title": "Actors",
+      "type": "array"
+    },
+    "task": {
+      "$ref": "#/$defs/BenignTaskSpec"
+    },
+    "policies": {
+      "items": {
+        "$ref": "#/$defs/PolicyBinding"
+      },
+      "title": "Policies",
+      "type": "array"
+    },
+    "tools": {
+      "$ref": "#/$defs/ToolBindingSpec"
+    },
+    "attacks": {
+      "items": {
+        "$ref": "#/$defs/ScenarioAttackBinding"
+      },
+      "title": "Attacks",
+      "type": "array"
+    },
+    "hazards": {
+      "items": {
+        "$ref": "#/$defs/HazardSpec"
+      },
+      "title": "Hazards",
+      "type": "array"
+    },
+    "events": {
+      "items": {
+        "$ref": "#/$defs/ScenarioEventSpec"
+      },
+      "title": "Events",
+      "type": "array"
+    },
+    "horizon": {
+      "$ref": "#/$defs/HorizonProfile"
+    },
+    "decision_points": {
+      "items": {
+        "$ref": "#/$defs/CriticalDecisionPoint"
+      },
+      "title": "Decision Points",
+      "type": "array"
+    },
+    "safe_alternatives": {
+      "items": {
+        "$ref": "#/$defs/SafeAlternative"
+      },
+      "title": "Safe Alternatives",
+      "type": "array"
+    },
+    "outcomes": {
+      "$ref": "#/$defs/OutcomeSpec"
+    },
+    "recovery": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/RecoverySpec"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "difficulty": {
+      "$ref": "#/$defs/DifficultyProfile"
+    },
+    "splits": {
+      "$ref": "#/$defs/ScenarioSplitMetadata"
+    },
+    "hidden": {
+      "$ref": "#/$defs/HiddenScenarioState"
+    }
+  },
+  "required": [
+    "metadata",
+    "initial_state",
+    "actors",
+    "task",
+    "tools",
+    "horizon",
+    "outcomes",
+    "splits"
+  ],
+  "title": "FullScenarioSpec",
+  "type": "object"
+}

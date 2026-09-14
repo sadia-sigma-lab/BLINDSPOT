@@ -1,0 +1,19 @@
+split_rules:
+  - family: workspace:external-sharing@1.0.0
+    train_fraction: 0.6
+    validation_fraction: 0.2
+    test_fraction: 0.1
+    challenge_fraction: 0.05
+    hidden_test_fraction: 0.05
+
+holdouts:
+  attack_families:
+    hidden_test:
+      - task_injection
+  template_families:
+    test:
+      - workspace:share-file-base@1.0.0
+
+leakage_rules:
+  - no_twin_across: [hidden_test, train]
+  - no_same_template_params: [hidden_test, train]

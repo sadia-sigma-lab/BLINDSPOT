@@ -1,0 +1,58 @@
+[
+  {
+    "entity_id": "file_handbook",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "resource_type": "file",
+    "owner_id": "user_bob",
+    "organization_id": "org_acme",
+    "classification": "public",
+    "name": "employee_handbook.md",
+    "content": "# Employee Handbook\n\nWelcome to ACME Corporation.",
+    "shared_with": [],
+    "tags": ["handbook", "onboarding"]
+  },
+  {
+    "entity_id": "file_project_plan",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "resource_type": "file",
+    "owner_id": "user_alice",
+    "organization_id": "org_acme",
+    "classification": "internal",
+    "name": "project_alpha_plan.txt",
+    "content": "Project Alpha Q2 roadmap.",
+    "shared_with": ["bob@acme.example.org"],
+    "tags": ["project-alpha", "planning"]
+  },
+  {
+    "entity_id": "file_report",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "resource_type": "file",
+    "owner_id": "user_alice",
+    "organization_id": "org_acme",
+    "classification": "confidential",
+    "name": "report.txt",
+    "content": "Quarterly report — Q4 financial summary.",
+    "shared_with": [],
+    "tags": ["finance", "quarterly"]
+  },
+  {
+    "entity_id": "file_credentials",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "resource_type": "file",
+    "owner_id": "user_bob",
+    "organization_id": "org_acme",
+    "classification": "restricted",
+    "name": "service_credentials.txt",
+    "content": "[RESTRICTED] API keys and service credentials.",
+    "shared_with": [],
+    "tags": ["credentials", "security"]
+  }
+]

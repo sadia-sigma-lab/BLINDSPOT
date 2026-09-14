@@ -1,0 +1,1 @@
+{"_note": "Finance attack state slots.", "active_attacks": [], "injection_points": [{"slot": "payment_injection", "description": "Task injection via financial message"}, {"slot": "pii_exfiltration", "description": "Cross-tenant PII exfiltration"}, {"slot": "spending_limit_bypass", "description": "Stale approval reuse for spending limit"}]}

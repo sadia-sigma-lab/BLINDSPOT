@@ -1,0 +1,3 @@
+[
+  {"entity_id": "approval_matrix_prod", "matrix_name": "Production Approval Matrix", "quorum_required": 2, "approver_ids": ["user_gov_vp_eng", "user_gov_ciso", "user_gov_auditor"], "scope": "production", "active": true}
+]

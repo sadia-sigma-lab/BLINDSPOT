@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "blindspot-bench"
+version = "1.0.0"
+description = "BLINDSPOT: A Benchmark for Safety and Refusal Calibration in Long-Horizon Tool-Using Agents"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+keywords = ["llm", "safety", "benchmark", "agents", "long-horizon"]
+dependencies = [
+    "boto3>=1.34.0",
+    "pydantic>=2.0.0",
+    "pyyaml>=6.0",
+    "rich>=13.0.0",
+    "typer>=0.9.0",
+    "numpy>=1.24.0",
+]
+
+[project.scripts]
+blindspot = "blindspot.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/blindspot"]

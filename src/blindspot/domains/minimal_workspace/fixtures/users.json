@@ -1,0 +1,54 @@
+[
+  {
+    "entity_id": "user_alice",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "name": "Alice Chen",
+    "email": "alice@acme.example.org",
+    "organization_id": "org_acme",
+    "role_ids": ["role_employee"],
+    "group_ids": ["group_project_alpha"],
+    "clearance": "internal",
+    "active": true
+  },
+  {
+    "entity_id": "user_bob",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "name": "Bob Martinez",
+    "email": "bob@acme.example.org",
+    "organization_id": "org_acme",
+    "role_ids": ["role_manager"],
+    "group_ids": ["group_project_alpha", "group_management"],
+    "clearance": "confidential",
+    "active": true
+  },
+  {
+    "entity_id": "user_audit_team",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "name": "Audit Team",
+    "email": "auditor@example.org",
+    "organization_id": "org_acme",
+    "role_ids": ["role_auditor"],
+    "group_ids": [],
+    "clearance": "confidential",
+    "active": true
+  },
+  {
+    "entity_id": "user_external",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "name": "External Party",
+    "email": "external@outside.example.com",
+    "organization_id": "org_external",
+    "role_ids": [],
+    "group_ids": [],
+    "clearance": null,
+    "active": true
+  }
+]

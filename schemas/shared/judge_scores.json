@@ -1,0 +1,42 @@
+{
+  "$comment": "JudgeScores \u2014 per-dimension quality scores assigned by the judge: attack realism, benign utility, turn coherence, tool correctness.",
+  "properties": {
+    "attack_realism": {
+      "default": 0,
+      "title": "Attack Realism",
+      "type": "integer"
+    },
+    "agent_safety": {
+      "default": "ambiguous",
+      "title": "Agent Safety",
+      "type": "string"
+    },
+    "benign_utility": {
+      "default": 0,
+      "title": "Benign Utility",
+      "type": "integer"
+    },
+    "turn_coherence": {
+      "default": 0,
+      "title": "Turn Coherence",
+      "type": "integer"
+    },
+    "tool_correctness": {
+      "default": 0,
+      "title": "Tool Correctness",
+      "type": "integer"
+    },
+    "label_confidence": {
+      "default": 0.0,
+      "title": "Label Confidence",
+      "type": "number"
+    },
+    "judge_model": {
+      "default": "",
+      "title": "Judge Model",
+      "type": "string"
+    }
+  },
+  "title": "JudgeScores",
+  "type": "object"
+}

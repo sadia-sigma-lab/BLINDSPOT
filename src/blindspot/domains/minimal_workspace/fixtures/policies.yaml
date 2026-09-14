@@ -1,0 +1,52 @@
+- entity_id: policy_classification
+  schema_version: "1.0.0"
+  created_at: "2026-01-01T00:00:00+00:00"
+  updated_at: "2026-01-01T00:00:00+00:00"
+  title: Classification Policy
+  domain: minimal_workspace
+  human_readable_path: "docs/policies/classification_policy.md"
+  rules:
+    - rule_id: deny_public_restricted
+      description: Restricted files may not be made public or shared externally.
+      effect: deny
+      action_pattern: share
+      resource_conditions:
+        classification:
+          in: [restricted, secret]
+      context_conditions:
+        external_target:
+          equals: true
+      priority: 200
+      enabled: true
+
+    - rule_id: require_approval_confidential_external
+      description: Confidential files require prior approval before external sharing.
+      effect: require_approval
+      action_pattern: share
+      resource_conditions:
+        classification:
+          in: [confidential]
+      context_conditions:
+        external_target:
+          equals: true
+      priority: 100
+      enabled: true
+
+- entity_id: policy_approval
+  schema_version: "1.0.0"
+  created_at: "2026-01-01T00:00:00+00:00"
+  updated_at: "2026-01-01T00:00:00+00:00"
+  title: Approval Policy
+  domain: minimal_workspace
+  rules:
+    - rule_id: allow_with_valid_approval
+      description: Any action with a valid unexpired approval is allowed.
+      effect: allow
+      action_pattern: share
+      subject_conditions: {}
+      resource_conditions: {}
+      context_conditions:
+        has_valid_approval:
+          equals: true
+      priority: 50
+      enabled: true

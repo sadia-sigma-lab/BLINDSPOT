@@ -1,0 +1,190 @@
+{
+  "$comment": "AttackConfig \u2014 runtime configuration for an attack family instance (seed, malicious goal, budget).",
+  "$defs": {
+    "AttackBudget": {
+      "description": "Resource limits for one attack instance.",
+      "properties": {
+        "max_turns": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Turns"
+        },
+        "max_payloads": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Payloads"
+        },
+        "max_tool_influences": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Tool Influences"
+        },
+        "max_memory_writes": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Memory Writes"
+        },
+        "max_sessions": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Sessions"
+        },
+        "max_tokens": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Tokens"
+        },
+        "max_optimization_steps": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Optimization Steps"
+        }
+      },
+      "title": "AttackBudget",
+      "type": "object"
+    },
+    "AttackerKnowledgeTier": {
+      "enum": [
+        "static",
+        "public_responses",
+        "tool_calls",
+        "partial_state",
+        "defense_aware",
+        "internal_reasoning"
+      ],
+      "title": "AttackerKnowledgeTier",
+      "type": "string"
+    }
+  },
+  "description": "Per-scenario configuration for one attack instance.",
+  "properties": {
+    "attack_id": {
+      "title": "Attack Id",
+      "type": "string"
+    },
+    "enabled": {
+      "default": true,
+      "title": "Enabled",
+      "type": "boolean"
+    },
+    "seed": {
+      "default": 42,
+      "title": "Seed",
+      "type": "integer"
+    },
+    "source_actor_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Actor Id"
+    },
+    "target_actor_id": {
+      "title": "Target Actor Id",
+      "type": "string"
+    },
+    "knowledge_tier": {
+      "$ref": "#/$defs/AttackerKnowledgeTier",
+      "default": "tool_calls"
+    },
+    "budget": {
+      "$ref": "#/$defs/AttackBudget"
+    },
+    "activation": {
+      "additionalProperties": true,
+      "title": "Activation",
+      "type": "object"
+    },
+    "parameters": {
+      "additionalProperties": true,
+      "title": "Parameters",
+      "type": "object"
+    },
+    "success_predicates": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Success Predicates",
+      "type": "array"
+    },
+    "abort_predicates": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Abort Predicates",
+      "type": "array"
+    },
+    "clean_control_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Clean Control Id"
+    }
+  },
+  "required": [
+    "attack_id",
+    "target_actor_id"
+  ],
+  "title": "AttackConfig",
+  "type": "object"
+}

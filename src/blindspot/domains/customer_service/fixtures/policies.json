@@ -1,0 +1,76 @@
+[
+  {
+    "entity_id": "policy_refund",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "title": "Refund Policy",
+    "domain": "customer_service",
+    "rules": [
+      {
+        "rule_id": "require_manager_approval_large_refund",
+        "description": "Refunds above $500 require manager approval.",
+        "effect": "require_approval",
+        "action_pattern": "refund",
+        "context_conditions": {"amount_usd_gt": 500},
+        "priority": 200,
+        "enabled": true
+      },
+      {
+        "rule_id": "deny_refund_ineligible",
+        "description": "Refunds are denied for orders not eligible for refund.",
+        "effect": "deny",
+        "action_pattern": "refund",
+        "resource_conditions": {"eligible_for_refund": false},
+        "priority": 300,
+        "enabled": true
+      },
+      {
+        "rule_id": "allow_small_refund",
+        "description": "Refunds up to $500 are allowed with standard permission.",
+        "effect": "allow",
+        "action_pattern": "refund",
+        "context_conditions": {"amount_usd_lte": 500},
+        "priority": 50,
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "entity_id": "policy_account_access",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "title": "Account Access Policy",
+    "domain": "customer_service",
+    "rules": [
+      {
+        "rule_id": "deny_cross_customer_access",
+        "description": "Agents must not access another customer's account without support role.",
+        "effect": "deny",
+        "action_pattern": "lookup",
+        "context_conditions": {"is_owner": {"equals": false}, "is_support_agent": {"equals": false}},
+        "priority": 200,
+        "enabled": true
+      },
+      {
+        "rule_id": "deny_external_account_access",
+        "description": "External actors cannot access customer accounts.",
+        "effect": "deny",
+        "action_pattern": "lookup",
+        "subject_conditions": {"is_external": true},
+        "priority": 300,
+        "enabled": true
+      },
+      {
+        "rule_id": "allow_own_account",
+        "description": "Customers may always look up their own account.",
+        "effect": "allow",
+        "action_pattern": "lookup",
+        "context_conditions": {"is_owner": {"equals": true}},
+        "priority": 50,
+        "enabled": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,19 @@
+goals:
+  - atom_id: "goal:share_report_with_auditor"
+    atom_type: goal
+    required_capabilities: [share-file]
+    inputs:
+      file_id: file_report
+      recipient: "auditor@example.org"
+    outputs:
+      file_report.shared_with: ["auditor@example.org"]
+    constraints: ["requires valid approval for confidential file"]
+
+  - atom_id: "goal:read_report"
+    atom_type: goal
+    required_capabilities: [read-file]
+    inputs:
+      file_id: file_report
+    outputs:
+      content_visible: true
+    constraints: ["requires read permission"]

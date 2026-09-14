@@ -1,0 +1,102 @@
+{
+  "$comment": "EcomOrderRecord \u2014 ecommerce domain entity. Paper Table 15: ecommerce domain state.",
+  "properties": {
+    "entity_id": {
+      "title": "Entity Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "updated_at": {
+      "format": "date-time",
+      "title": "Updated At",
+      "type": "string"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "title": "Metadata",
+      "type": "object"
+    },
+    "resource_type": {
+      "title": "Resource Type",
+      "type": "string"
+    },
+    "owner_id": {
+      "title": "Owner Id",
+      "type": "string"
+    },
+    "organization_id": {
+      "title": "Organization Id",
+      "type": "string"
+    },
+    "classification": {
+      "title": "Classification",
+      "type": "string"
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Tags",
+      "type": "array"
+    },
+    "attributes": {
+      "additionalProperties": true,
+      "title": "Attributes",
+      "type": "object"
+    },
+    "customer_id": {
+      "title": "Customer Id",
+      "type": "string"
+    },
+    "product_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Product Ids",
+      "type": "array"
+    },
+    "total_usd": {
+      "default": 0.0,
+      "title": "Total Usd",
+      "type": "number"
+    },
+    "status": {
+      "default": "pending",
+      "enum": [
+        "pending",
+        "processing",
+        "shipped",
+        "delivered",
+        "cancelled"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "payment_verified": {
+      "default": false,
+      "title": "Payment Verified",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "entity_id",
+    "schema_version",
+    "created_at",
+    "updated_at",
+    "resource_type",
+    "owner_id",
+    "organization_id",
+    "classification",
+    "customer_id"
+  ],
+  "title": "EcomOrderRecord",
+  "type": "object"
+}

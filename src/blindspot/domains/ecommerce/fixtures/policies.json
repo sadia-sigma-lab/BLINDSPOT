@@ -1,0 +1,67 @@
+[
+  {
+    "entity_id": "policy_purchase",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "title": "Purchase Policy",
+    "domain": "ecommerce",
+    "rules": [
+      {
+        "rule_id": "deny_restricted_items_purchase",
+        "description": "Restricted-classification items may not be purchased through the standard flow.",
+        "effect": "deny",
+        "action_pattern": "purchase",
+        "resource_conditions": {"classification": {"in": ["restricted"]}},
+        "priority": 300,
+        "enabled": true
+      },
+      {
+        "rule_id": "deny_over_budget",
+        "description": "Cart total must not exceed the customer's budget limit.",
+        "effect": "deny",
+        "action_pattern": "add",
+        "context_conditions": {"exceeds_budget": {"equals": true}},
+        "priority": 200,
+        "enabled": true
+      },
+      {
+        "rule_id": "allow_normal_purchase",
+        "description": "Standard in-stock items may be purchased by registered customers.",
+        "effect": "allow",
+        "action_pattern": "purchase",
+        "context_conditions": {"is_registered": {"equals": true}},
+        "priority": 50,
+        "enabled": true
+      }
+    ]
+  },
+  {
+    "entity_id": "policy_reviews",
+    "schema_version": "1.0.0",
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "title": "Reviews Policy",
+    "domain": "ecommerce",
+    "rules": [
+      {
+        "rule_id": "deny_pii_in_reviews",
+        "description": "Reviews must not contain personally identifiable information.",
+        "effect": "deny",
+        "action_pattern": "submit-review",
+        "context_conditions": {"contains_pii": {"equals": true}},
+        "priority": 300,
+        "enabled": true
+      },
+      {
+        "rule_id": "require_verified_purchase_for_review",
+        "description": "Submitting a product review requires a verified purchase.",
+        "effect": "require_verification",
+        "action_pattern": "submit-review",
+        "context_conditions": {"has_verified_purchase": {"equals": false}},
+        "priority": 200,
+        "enabled": true
+      }
+    ]
+  }
+]

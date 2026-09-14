@@ -1,0 +1,222 @@
+{
+  "$comment": "CleanTrajectory \u2014 publication-ready trajectory artifact. Each entry in data/trajectories/ follows this schema. Paper: \u00a75.1.",
+  "$defs": {
+    "CleanTrajectoryLineage": {
+      "properties": {
+        "source_run_id": {
+          "title": "Source Run Id",
+          "type": "string"
+        },
+        "scenario_id": {
+          "title": "Scenario Id",
+          "type": "string"
+        },
+        "attack_family": {
+          "title": "Attack Family",
+          "type": "string"
+        },
+        "seed": {
+          "title": "Seed",
+          "type": "integer"
+        },
+        "user_model": {
+          "title": "User Model",
+          "type": "string"
+        },
+        "execution_model": {
+          "title": "Execution Model",
+          "type": "string"
+        },
+        "judge_model": {
+          "title": "Judge Model",
+          "type": "string"
+        },
+        "corrections_applied": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Corrections Applied",
+          "type": "array"
+        }
+      },
+      "required": [
+        "source_run_id",
+        "scenario_id",
+        "attack_family",
+        "seed",
+        "user_model",
+        "execution_model",
+        "judge_model"
+      ],
+      "title": "CleanTrajectoryLineage",
+      "type": "object"
+    },
+    "JudgeScores": {
+      "properties": {
+        "attack_realism": {
+          "default": 0,
+          "title": "Attack Realism",
+          "type": "integer"
+        },
+        "agent_safety": {
+          "default": "ambiguous",
+          "title": "Agent Safety",
+          "type": "string"
+        },
+        "benign_utility": {
+          "default": 0,
+          "title": "Benign Utility",
+          "type": "integer"
+        },
+        "turn_coherence": {
+          "default": 0,
+          "title": "Turn Coherence",
+          "type": "integer"
+        },
+        "tool_correctness": {
+          "default": 0,
+          "title": "Tool Correctness",
+          "type": "integer"
+        },
+        "label_confidence": {
+          "default": 0.0,
+          "title": "Label Confidence",
+          "type": "number"
+        },
+        "judge_model": {
+          "default": "",
+          "title": "Judge Model",
+          "type": "string"
+        }
+      },
+      "title": "JudgeScores",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "clean_id": {
+      "title": "Clean Id",
+      "type": "string"
+    },
+    "source_trajectory_id": {
+      "title": "Source Trajectory Id",
+      "type": "string"
+    },
+    "scenario_id": {
+      "title": "Scenario Id",
+      "type": "string"
+    },
+    "attack_family": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Attack Family"
+    },
+    "episode_type": {
+      "default": "benign",
+      "enum": [
+        "benign",
+        "adversarial_unsafe",
+        "adversarial_safe",
+        "hazard"
+      ],
+      "title": "Episode Type",
+      "type": "string"
+    },
+    "turns": {
+      "default": 0,
+      "title": "Turns",
+      "type": "integer"
+    },
+    "tool_calls": {
+      "default": 0,
+      "title": "Tool Calls",
+      "type": "integer"
+    },
+    "safety_label": {
+      "default": "indeterminate",
+      "enum": [
+        "safe_completion",
+        "unsafe_completion",
+        "correct_refusal",
+        "indeterminate",
+        "over_refusal"
+      ],
+      "title": "Safety Label",
+      "type": "string"
+    },
+    "diagnostic_labels": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Diagnostic Labels",
+      "type": "array"
+    },
+    "judge_scores": {
+      "$ref": "#/$defs/JudgeScores"
+    },
+    "judge_notes": {
+      "default": "",
+      "title": "Judge Notes",
+      "type": "string"
+    },
+    "corrections_applied": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Corrections Applied",
+      "type": "array"
+    },
+    "human_reviewed": {
+      "default": false,
+      "title": "Human Reviewed",
+      "type": "boolean"
+    },
+    "publishable": {
+      "default": false,
+      "title": "Publishable",
+      "type": "boolean"
+    },
+    "conversation_transcript": {
+      "default": "",
+      "title": "Conversation Transcript",
+      "type": "string"
+    },
+    "tool_calls_summary": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Tool Calls Summary",
+      "type": "array"
+    },
+    "lineage": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CleanTrajectoryLineage"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "clean_id",
+    "source_trajectory_id",
+    "scenario_id"
+  ],
+  "title": "CleanTrajectory",
+  "type": "object"
+}

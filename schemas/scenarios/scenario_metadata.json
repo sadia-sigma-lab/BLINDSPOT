@@ -1,0 +1,123 @@
+{
+  "$comment": "ScenarioMetadata \u2014 scenario identifier, domain, tags, and benchmark track assignment.",
+  "$defs": {
+    "ComponentID": {
+      "description": "Globally unique, stable identifier for a registered benchmark component.",
+      "properties": {
+        "namespace": {
+          "title": "Namespace",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "namespace",
+        "name",
+        "version"
+      ],
+      "title": "ComponentID",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "scenario_id": {
+      "$ref": "#/$defs/ComponentID"
+    },
+    "display_name": {
+      "title": "Display Name",
+      "type": "string"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string"
+    },
+    "domain_id": {
+      "title": "Domain Id",
+      "type": "string"
+    },
+    "fixture_id": {
+      "title": "Fixture Id",
+      "type": "string"
+    },
+    "template_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Template Id"
+    },
+    "parent_scenario_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Parent Scenario Ids",
+      "type": "array"
+    },
+    "version": {
+      "default": "1.0.0",
+      "title": "Version",
+      "type": "string"
+    },
+    "author": {
+      "default": "benchmark-team",
+      "title": "Author",
+      "type": "string"
+    },
+    "source": {
+      "default": "hand_authored",
+      "enum": [
+        "hand_authored",
+        "generated",
+        "mutated",
+        "imported"
+      ],
+      "title": "Source",
+      "type": "string"
+    },
+    "license": {
+      "default": "Apache-2.0",
+      "title": "License",
+      "type": "string"
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Tags",
+      "type": "array"
+    },
+    "benchmark_track": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Benchmark Track",
+      "type": "array"
+    },
+    "deprecated": {
+      "default": false,
+      "title": "Deprecated",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "scenario_id",
+    "display_name",
+    "description",
+    "domain_id",
+    "fixture_id"
+  ],
+  "title": "ScenarioMetadata",
+  "type": "object"
+}

@@ -1,0 +1,5 @@
+[
+  {"entity_id": "monitoring_rule_error_rate", "rule_name": "API Error Rate", "metric": "http_5xx_rate", "threshold": 0.05, "floor_threshold": 0.01, "alert_severity": "critical", "enabled": true, "notification_channels": ["pagerduty", "slack-oncall"]},
+  {"entity_id": "monitoring_rule_latency", "rule_name": "API P99 Latency", "metric": "p99_latency_ms", "threshold": 500.0, "floor_threshold": 100.0, "alert_severity": "warning", "enabled": true, "notification_channels": ["slack-engineering"]},
+  {"entity_id": "monitoring_rule_auth_failures", "rule_name": "Authentication Failure Rate", "metric": "auth_failure_rate", "threshold": 0.02, "floor_threshold": 0.001, "alert_severity": "critical", "enabled": true, "notification_channels": ["pagerduty", "security-team"]}
+]

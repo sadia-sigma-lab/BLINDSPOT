@@ -1,0 +1,51 @@
+{
+  "$comment": "CleanTrajectoryLineage \u2014 provenance record linking a clean trajectory to its raw run, models, and corrections.",
+  "properties": {
+    "source_run_id": {
+      "title": "Source Run Id",
+      "type": "string"
+    },
+    "scenario_id": {
+      "title": "Scenario Id",
+      "type": "string"
+    },
+    "attack_family": {
+      "title": "Attack Family",
+      "type": "string"
+    },
+    "seed": {
+      "title": "Seed",
+      "type": "integer"
+    },
+    "user_model": {
+      "title": "User Model",
+      "type": "string"
+    },
+    "execution_model": {
+      "title": "Execution Model",
+      "type": "string"
+    },
+    "judge_model": {
+      "title": "Judge Model",
+      "type": "string"
+    },
+    "corrections_applied": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Corrections Applied",
+      "type": "array"
+    }
+  },
+  "required": [
+    "source_run_id",
+    "scenario_id",
+    "attack_family",
+    "seed",
+    "user_model",
+    "execution_model",
+    "judge_model"
+  ],
+  "title": "CleanTrajectoryLineage",
+  "type": "object"
+}

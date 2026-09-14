@@ -1,0 +1,65 @@
+{
+  "$comment": "ScenarioAttackBinding \u2014 associates an attack family instance with a scenario. Paper: \u00a74.4.",
+  "properties": {
+    "attack_id": {
+      "title": "Attack Id",
+      "type": "string"
+    },
+    "instance_id": {
+      "title": "Instance Id",
+      "type": "string"
+    },
+    "enabled": {
+      "default": true,
+      "title": "Enabled",
+      "type": "boolean"
+    },
+    "config": {
+      "additionalProperties": true,
+      "title": "Config",
+      "type": "object"
+    },
+    "activation_condition": {
+      "additionalProperties": true,
+      "title": "Activation Condition",
+      "type": "object"
+    },
+    "applies_to_sessions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Applies To Sessions",
+      "type": "array"
+    },
+    "expected_progress_graph_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Expected Progress Graph Id"
+    },
+    "clean_control_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Clean Control Id"
+    }
+  },
+  "required": [
+    "attack_id",
+    "instance_id"
+  ],
+  "title": "ScenarioAttackBinding",
+  "type": "object"
+}

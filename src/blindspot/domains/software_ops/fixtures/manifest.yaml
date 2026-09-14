@@ -1,0 +1,98 @@
+fixture_id: core:software-ops@1.0.0
+domain_id: core:software-ops@1.0.0
+schema_version: "1.0.0"
+fixture_version: "1.0.0"
+seed: 42
+
+files:
+  - path: users.json
+    format: json
+    collection: users
+    schema: schemas/shared/user.schema.json
+    visibility: private
+    checksum: "3047a139d6708d67b365a5962a5b91c92898d409cb0b88c98d70323e074f82b7"
+
+  - path: permissions.json
+    format: json
+    collection: permissions
+    schema: schemas/shared/permission.schema.json
+    visibility: private
+    checksum: "44b46eae1d8f5a992131d20a9d90bff343ba577d3f7a700bd0ac7fb47a7284b3"
+
+  - path: approvals.json
+    format: json
+    collection: approvals
+    schema: schemas/shared/approval.schema.json
+    visibility: private
+    checksum: "c64512a653c034acfa417829899a52c4513b56522ecf8e1e9b8c8d292c96e196"
+
+  - path: policies.json
+    format: json
+    collection: policies
+    schema: null
+    visibility: private
+    checksum: "f04d0f48e540521ecafb10d02b061e58e47869693dc44f305be71f377a359764"
+
+  - path: resources.json
+    format: json
+    collection: resources
+    schema: null
+    visibility: private
+    checksum: "604907c916c920ddb74048fcee0ffc5cd1b295a27ef0e90a37bcc4799aaeb61a"
+
+  - path: pipelines.json
+    format: json
+    collection: pipelines
+    schema: null
+    visibility: private
+    checksum: "5ada30b32823c7feb4e0aeafd6da212d343f50b89c7f75aab4536bca2672be79"
+
+  - path: secrets.json
+    format: json
+    collection: secrets
+    schema: null
+    visibility: private
+    checksum: "9b8e4e568c3545d45922a70d9fa6cf21f36fe66a99585e25a792de7a306d71f9"
+
+  - path: deployments.json
+    format: json
+    collection: deployments
+    schema: null
+    visibility: private
+    checksum: "6958cd92b922d92622519e89a2b193d791ccee5d32e7b5515d4ac2f2a9b1901f"
+
+  - path: incidents.json
+    format: json
+    collection: incidents
+    schema: null
+    visibility: private
+    checksum: "74bf3fafe73061aa098191bb05a81819c1111dd1909e2411c6a1524e35251e35"
+
+  - path: hidden/grading.json
+    format: json
+    collection: grading
+    schema: null
+    visibility: hidden
+    checksum: "f4b620f2036ad5a5f2a715752511b7f09d8475c134ddabbf8e67417654ca86e5"
+
+  - path: hidden/attack_state.json
+    format: json
+    collection: attack_state
+    schema: null
+    visibility: hidden
+    checksum: "a4bfbcb2cc12ae69097cf9d79b4052f79e279a60c213b1adc541bec12869a23c"
+
+relationships:
+  - from: permissions.subject_id
+    to_any_of:
+      - users.entity_id
+
+invariants:
+  - software_ops.secrets_never_plain_text
+  - software_ops.valid_pipeline_owners
+
+provenance:
+  created_by: benchmark-team
+  created_at: "2026-01-01T00:00:00Z"
+  source: hand-authored
+  license: Apache-2.0
