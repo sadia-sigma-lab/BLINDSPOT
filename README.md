@@ -516,9 +516,11 @@ pytest tests/unit/ -v
 ## Citation
 
 ```bibtex
-@inproceedings{blindspot2026,
-  title={{BLINDSPOT}: A Benchmark for Safety and Refusal Calibration in Long-Horizon Tool-Using Agents},
-  year={2026}
+@article{asif2026blindspot,
+title = {BLINDSPOT: A Benchmark for Safety and Refusal Calibration in Long-Horizon Tool-Using Agents},
+author = {Asif, Sadia and Mohammadi Amiri, Mohammad and Abbas, Momin and Pedapati, Tejaswini and Sattigeri, Prasanna},
+journal = {arXiv preprint arXiv:2609.16305},
+year = {2026}
 }
 ```
 
