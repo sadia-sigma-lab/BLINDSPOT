@@ -120,7 +120,7 @@ blindspot/
 ## Installation
 
 ```bash
-git clone https://github.com/your-org/blindspot.git
+git clone https://github.com/.../blindspot.git
 cd blindspot
 pip install -e .
 ```
